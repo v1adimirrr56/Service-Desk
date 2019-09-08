@@ -8,5 +8,6 @@ namespace ServiceDesk.Incidents.Entities
     public class Incident : IHasId
     {
         public long Id { get; set; }
+        public string Name { get; set; }
     }
 }

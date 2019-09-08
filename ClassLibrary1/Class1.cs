@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ServiceDesk.Crashes.Context
+namespace ClassLibrary1
 {
     public class Class1
     {
