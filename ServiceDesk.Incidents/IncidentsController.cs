@@ -1,17 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using ServiceDesk.Incidents.Entities;
+using ServiceDesk.Incidents.Models;
 using ServiceDesk.Infrastructure;
-using ServiceDesk.Infrastructure.Context;
+using ServiceDesk.Context.Infrastructure;
+using System.Linq;
 
 namespace ServiceDesk.Incidents
 {
     public class IncidentsController : ServiceDeskBaseController
     {
-        private IIncidentsQueryableProvider _queryableProvider;
-        public IncidentsController(IIncidentsQueryableProvider queryableProvider)
+        public IncidentsController()
         {
-            _queryableProvider = queryableProvider;
         }
+
         [HttpGet]
         public IActionResult Get()
         {

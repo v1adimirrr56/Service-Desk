@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ServiceDesk.Infrastructure.Context\ServiceDesk.Infrastructure.Context.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceDesk.Context.Infrastructure\ServiceDesk.Context.Infrastructure.csproj" />
     <ProjectReference Include="..\ServiceDesk.Infrastructure\ServiceDesk.Infrastructure.csproj" />
+    <ProjectReference Include="..\ServiceDesk.SmartUI\ServiceDesk.SmartUI.csproj" />
   </ItemGroup>
 
 </Project>

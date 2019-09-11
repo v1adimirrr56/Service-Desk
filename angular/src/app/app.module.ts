@@ -5,12 +5,18 @@ import { AppComponent } from './app.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutComponent } from './layout/layout.component';
+import { SchemaComponent } from './schema/schema.component';
+import { SchemaService } from './services/schema.service';
+import { TabComponent } from './tab/tab.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormBuilderComponent
+    FormBuilderComponent,
+    LayoutComponent,
+    TabComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [SchemaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

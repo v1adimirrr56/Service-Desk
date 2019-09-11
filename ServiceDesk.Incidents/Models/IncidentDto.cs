@@ -1,6 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ServiceDesk.Incidents.Selector;
+using ServiceDesk.SmartUI.FormAttribute;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServiceDesk.Incidents.Models
 {
@@ -9,10 +11,12 @@ namespace ServiceDesk.Incidents.Models
         public long Id { get; set; }
         public string Name { get; set; }
         public DateTime CreateDate { get; set; }
-        public bool Archive {get;set;}
+        public bool Archive { get; set; }
+        [DropdownList(typeof(BranchSelector))]
+        [Required]
         public string Branch { get; set; }
         public ShareType ShareType { get; set; }
-    } 
+    }
 
     public enum ShareType
     {

@@ -2,6 +2,32 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
+      "AutoMapper/8.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        }
+      },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.1.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Castle.Core/4.2.1": {
         "type": "package",
         "dependencies": {
@@ -4552,36 +4578,22 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "ServiceDesk.Crashes.Context/1.0.0": {
+      "ServiceDesk.Context.Crashes/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.2.6",
           "Microsoft.EntityFrameworkCore.Proxies": "2.2.6",
-          "ServiceDesk.Infrastructure.Context": "1.0.0"
+          "ServiceDesk.Context.Infrastructure": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/ServiceDesk.Crashes.Context.dll": {}
+          "bin/placeholder/ServiceDesk.Context.Crashes.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ServiceDesk.Crashes.Context.dll": {}
+          "bin/placeholder/ServiceDesk.Context.Crashes.dll": {}
         }
       },
-      "ServiceDesk.Incidents/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "ServiceDesk.Infrastructure": "1.0.0",
-          "ServiceDesk.Infrastructure.Context": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/ServiceDesk.Incidents.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ServiceDesk.Incidents.dll": {}
-        }
-      },
-      "ServiceDesk.Incidents.Context/1.0.0": {
+      "ServiceDesk.Context.Incidents/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -4589,19 +4601,50 @@
           "Microsoft.EntityFrameworkCore.Proxies": "2.2.6",
           "Microsoft.EntityFrameworkCore.Relational": "2.2.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6",
+          "ServiceDesk.Context.Infrastructure": "1.0.0",
           "ServiceDesk.Incidents": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/ServiceDesk.Incidents.Context.dll": {}
+          "bin/placeholder/ServiceDesk.Context.Incidents.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ServiceDesk.Incidents.Context.dll": {}
+          "bin/placeholder/ServiceDesk.Context.Incidents.dll": {}
+        }
+      },
+      "ServiceDesk.Context.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.2.6"
+        },
+        "compile": {
+          "bin/placeholder/ServiceDesk.Context.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceDesk.Context.Infrastructure.dll": {}
+        }
+      },
+      "ServiceDesk.Incidents/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "AutoMapper": "8.1.1",
+          "ServiceDesk.Context.Infrastructure": "1.0.0",
+          "ServiceDesk.Infrastructure": "1.0.0",
+          "ServiceDesk.SmartUI": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ServiceDesk.Incidents.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceDesk.Incidents.dll": {}
         }
       },
       "ServiceDesk.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "AutoMapper": "8.1.1",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
         },
         "compile": {
@@ -4611,36 +4654,69 @@
           "bin/placeholder/ServiceDesk.Infrastructure.dll": {}
         }
       },
-      "ServiceDesk.Infrastructure.Context/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.2.6"
-        },
-        "compile": {
-          "bin/placeholder/ServiceDesk.Infrastructure.Context.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ServiceDesk.Infrastructure.Context.dll": {}
-        }
-      },
       "ServiceDesk.SchemaBuild/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.2.0",
+          "ServiceDesk.Context.Infrastructure": "1.0.0",
           "ServiceDesk.Infrastructure": "1.0.0",
-          "ServiceDesk.Infrastructure.Context": "1.0.0"
+          "ServiceDesk.SmartUI": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ServiceDesk.SchemaBuild.dll": {}
         },
         "runtime": {
           "bin/placeholder/ServiceDesk.SchemaBuild.dll": {}
+        }
+      },
+      "ServiceDesk.SmartUI/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "AutoMapper": "8.1.1",
+          "ServiceDesk.Context.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ServiceDesk.SmartUI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceDesk.SmartUI.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "AutoMapper/8.1.1": {
+      "sha512": "GKBliBukkLG0z/U0T4Jy+yEpr5bKDImQ9nEy/T8jqNulwNkWDjiEWa9TL4yCxIhleDbmVmw2xYSaJ3Eb2OcSUg==",
+      "type": "package",
+      "path": "automapper/8.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.8.1.1.nupkg.sha512",
+        "automapper.nuspec",
+        "lib/net461/AutoMapper.dll",
+        "lib/net461/AutoMapper.pdb",
+        "lib/net461/AutoMapper.xml",
+        "lib/netstandard2.0/AutoMapper.dll",
+        "lib/netstandard2.0/AutoMapper.pdb",
+        "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {
+      "sha512": "MPMgL6JGEH2Egmgh3+tw2UVX05ph8As7YtYWzt2ZDCc0STHGG5EsV3UMWH/g4aHaN1q20Bbc0PTMy3I0PwgBGQ==",
+      "type": "package",
+      "path": "automapper.extensions.microsoft.dependencyinjection/6.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.nuspec",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.pdb"
+      ]
+    },
     "Castle.Core/4.2.1": {
       "sha512": "tLlM4XU+aj0n8TdkiHHmV/48GpTuFEPQimFjHTZGD9XTWRCSLQcnB6rOftqaUSCXeBSbmWWEGeLPTLG3siTrcw==",
       "type": "package",
@@ -12511,46 +12587,53 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "ServiceDesk.Crashes.Context/1.0.0": {
+    "ServiceDesk.Context.Crashes/1.0.0": {
       "type": "project",
-      "path": "../ServiceDesk.Crashes.Context/ServiceDesk.Crashes.Context.csproj",
-      "msbuildProject": "../ServiceDesk.Crashes.Context/ServiceDesk.Crashes.Context.csproj"
+      "path": "../ServiceDesk.Context.Crashes/ServiceDesk.Context.Crashes.csproj",
+      "msbuildProject": "../ServiceDesk.Context.Crashes/ServiceDesk.Context.Crashes.csproj"
+    },
+    "ServiceDesk.Context.Incidents/1.0.0": {
+      "type": "project",
+      "path": "../ServiceDesk.Context.Incidents/ServiceDesk.Context.Incidents.csproj",
+      "msbuildProject": "../ServiceDesk.Context.Incidents/ServiceDesk.Context.Incidents.csproj"
+    },
+    "ServiceDesk.Context.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../ServiceDesk.Context.Infrastructure/ServiceDesk.Context.Infrastructure.csproj",
+      "msbuildProject": "../ServiceDesk.Context.Infrastructure/ServiceDesk.Context.Infrastructure.csproj"
     },
     "ServiceDesk.Incidents/1.0.0": {
       "type": "project",
       "path": "../ServiceDesk.Incidents/ServiceDesk.Incidents.csproj",
       "msbuildProject": "../ServiceDesk.Incidents/ServiceDesk.Incidents.csproj"
     },
-    "ServiceDesk.Incidents.Context/1.0.0": {
-      "type": "project",
-      "path": "../ServiceDesk.Incidents.Context/ServiceDesk.Incidents.Context.csproj",
-      "msbuildProject": "../ServiceDesk.Incidents.Context/ServiceDesk.Incidents.Context.csproj"
-    },
     "ServiceDesk.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../ServiceDesk.Infrastructure/ServiceDesk.Infrastructure.csproj",
       "msbuildProject": "../ServiceDesk.Infrastructure/ServiceDesk.Infrastructure.csproj"
     },
-    "ServiceDesk.Infrastructure.Context/1.0.0": {
-      "type": "project",
-      "path": "../ServiceDesk.Infrastructure.Context/ServiceDesk.Infrastructure.Context.csproj",
-      "msbuildProject": "../ServiceDesk.Infrastructure.Context/ServiceDesk.Infrastructure.Context.csproj"
-    },
     "ServiceDesk.SchemaBuild/1.0.0": {
       "type": "project",
       "path": "../ServiceDesk.SchemaBuild/ServiceDesk.SchemaBuild.csproj",
       "msbuildProject": "../ServiceDesk.SchemaBuild/ServiceDesk.SchemaBuild.csproj"
+    },
+    "ServiceDesk.SmartUI/1.0.0": {
+      "type": "project",
+      "path": "../ServiceDesk.SmartUI/ServiceDesk.SmartUI.csproj",
+      "msbuildProject": "../ServiceDesk.SmartUI/ServiceDesk.SmartUI.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "AutoMapper >= 8.1.1",
+      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 6.1.1",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "ServiceDesk.Crashes.Context >= 1.0.0",
+      "ServiceDesk.Context.Crashes >= 1.0.0",
+      "ServiceDesk.Context.Incidents >= 1.0.0",
+      "ServiceDesk.Context.Infrastructure >= 1.0.0",
       "ServiceDesk.Incidents >= 1.0.0",
-      "ServiceDesk.Incidents.Context >= 1.0.0",
-      "ServiceDesk.Infrastructure.Context >= 1.0.0",
       "ServiceDesk.SchemaBuild >= 1.0.0"
     ]
   },
@@ -12587,17 +12670,17 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\new\\ServiceDesk\\ServiceDesk.Crashes.Context\\ServiceDesk.Crashes.Context.csproj": {
-              "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Crashes.Context\\ServiceDesk.Crashes.Context.csproj"
+            "C:\\new\\ServiceDesk\\ServiceDesk.Context.Crashes\\ServiceDesk.Context.Crashes.csproj": {
+              "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Context.Crashes\\ServiceDesk.Context.Crashes.csproj"
             },
-            "C:\\new\\ServiceDesk\\ServiceDesk.Incidents.Context\\ServiceDesk.Incidents.Context.csproj": {
-              "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Incidents.Context\\ServiceDesk.Incidents.Context.csproj"
+            "C:\\new\\ServiceDesk\\ServiceDesk.Context.Incidents\\ServiceDesk.Context.Incidents.csproj": {
+              "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Context.Incidents\\ServiceDesk.Context.Incidents.csproj"
+            },
+            "C:\\new\\ServiceDesk\\ServiceDesk.Context.Infrastructure\\ServiceDesk.Context.Infrastructure.csproj": {
+              "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Context.Infrastructure\\ServiceDesk.Context.Infrastructure.csproj"
             },
             "C:\\new\\ServiceDesk\\ServiceDesk.Incidents\\ServiceDesk.Incidents.csproj": {
               "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Incidents\\ServiceDesk.Incidents.csproj"
-            },
-            "C:\\new\\ServiceDesk\\ServiceDesk.Infrastructure.Context\\ServiceDesk.Infrastructure.Context.csproj": {
-              "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Infrastructure.Context\\ServiceDesk.Infrastructure.Context.csproj"
             },
             "C:\\new\\ServiceDesk\\ServiceDesk.SchemaBuild\\ServiceDesk.SchemaBuild.csproj": {
               "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.SchemaBuild\\ServiceDesk.SchemaBuild.csproj"
@@ -12614,6 +12697,14 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[8.1.1, )"
+          },
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "target": "Package",
+            "version": "[6.1.1, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",

@@ -6,15 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ServiceDesk.Crashes.Context\ServiceDesk.Crashes.Context.csproj" />
-    <ProjectReference Include="..\ServiceDesk.Incidents.Context\ServiceDesk.Incidents.Context.csproj" />
+    <ProjectReference Include="..\ServiceDesk.Context.Crashes\ServiceDesk.Context.Crashes.csproj" />
+    <ProjectReference Include="..\ServiceDesk.Context.Incidents\ServiceDesk.Context.Incidents.csproj" />
     <ProjectReference Include="..\ServiceDesk.Incidents\ServiceDesk.Incidents.csproj" />
-    <ProjectReference Include="..\ServiceDesk.Infrastructure.Context\ServiceDesk.Infrastructure.Context.csproj" />
+    <ProjectReference Include="..\ServiceDesk.Context.Infrastructure\ServiceDesk.Context.Infrastructure.csproj" />
     <ProjectReference Include="..\ServiceDesk.SchemaBuild\ServiceDesk.SchemaBuild.csproj" />
   </ItemGroup>
 

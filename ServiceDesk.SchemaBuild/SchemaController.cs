@@ -1,7 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceDesk.Infrastructure;
-using ServiceDesk.Infrastructure.Context;
+using ServiceDesk.Context.Infrastructure;
 using System.Linq;
+using ServiceDesk.SmartUI.FormAttribute;
+using ServiceDesk.SmartUI;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace ServiceDesk.SchemaBuild
 {
@@ -16,29 +25,38 @@ namespace ServiceDesk.SchemaBuild
         [HttpGet("{context}/{schema}")]
         public IActionResult Get(string context, string schema,[FromServices] ModuleAssembly moduleAssembly)
         {
-            var allContexts = moduleAssembly;
-            /*if (allContexts.ContainsKey(context.ToLower()))
+            var assembliesByContext = moduleAssembly.GetAssembliesByContext(context.ToLower());
+            var fields = new List<FormField>();
+            var properties = assembliesByContext
+                .SelectMany(x => x.DefinedTypes)
+                .Where(x => x.Name.Contains("Dto"))
+                .SelectMany(x => x.DeclaredProperties)
+                .ToList();
+
+            foreach (var property in properties)
             {
-                var dto = allContexts[schema].DefinedTypes.Single(x => x.Name.Contains("Dto"));
-                var properties = dto.DeclaredProperties;
+                var attributes = property.GetCustomAttributes(true);
+                fields.Add(new FormField
+                {
+                    NameField = property.Name,
+                    Hidden = property.GetCustomAttribute<HiddenInputAttribute>() != null,
+                    Label = property.GetCustomAttribute<DisplayAttribute>()?.Name,
+                    ReadOnly = property.GetCustomAttribute<ReadOnlyAttribute>()?.IsReadOnly ?? false,
+                    Required = property.GetCustomAttribute<RequiredAttribute>() != null,
+                    Type = property.GetCustomAttribute<FormFiledAttribute>()?.ToString() ?? FieldType.Input.ToString()
+                });
 
-                var ff = properties
-                    .SelectMany(x =>
-                        x.GetCustomAttributes(true)
-                        .OfType<FromAttribute>()
-                        .Select(y => new FormField
-                        {
-                            Label = x.Name,
-                            Name = y.DisplayName,
-                            Type = y.Type.ToString(),
-                            DefaultValue = y.DefaultValue
-                        })
-                    );
+                /*foreach (var attr in property.GetCustomAttributes(true))
+                {
+                    if (attr is DropdownListAttribute)
+                    {
+                        var type = ((DropdownListAttribute)attr).Selector;
+                        
+                    }
+                }*/
+            }
 
-                return Ok(ff);
-            }*/
-
-            return BadRequest();
+            return Ok(fields);
         }
     }
 }

@@ -1,3 +1,6 @@
-<p>
+<div *ngIf="!isLoaded;else builder">
+  Loading...
+</div>
+<ng-template #builder>
   form-builder works!
-</p>
+</ng-template>

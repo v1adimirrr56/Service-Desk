@@ -16,14 +16,14 @@ export class ProductFormControl extends FormControl {
           case "required":
             messages.push(`You must enter a ${this.label}`);
             break;
-          case "minlength":
+          case 'minlength':
             messages.push(`A ${this.label} must be at least
              ${this.errors['minlength'].requiredLength}
             characters`);
             break;
           case "maxlength":
             messages.push(`A ${this.label} must be no more than
-             ${this.errors['maxlength'].requiredLength}
+             ${this.errors.maxlength.requiredLength}
             characters`);
             break;
           case "pattern":

@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{FE28DDE8-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{4D9EB29A-C19C-478A-8F7C-EBFB77E64A86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Incidents.Context", "ServiceDesk.Incidents.Context\ServiceDesk.Incidents.Context.csproj", "{47342A53-F04B-4DF8-8932-43851A20FB9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Context.Incidents", "ServiceDesk.Context.Incidents\ServiceDesk.Context.Incidents.csproj", "{47342A53-F04B-4DF8-8932-43851A20FB9E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Crashes.Context", "ServiceDesk.Crashes.Context\ServiceDesk.Crashes.Context.csproj", "{17592AFD-C699-431B-95DF-360D7C87F38E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Context.Crashes", "ServiceDesk.Context.Crashes\ServiceDesk.Context.Crashes.csproj", "{17592AFD-C699-431B-95DF-360D7C87F38E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Incidents", "ServiceDesk.Incidents\ServiceDesk.Incidents.csproj", "{8A176DE5-DEC1-445D-83A7-D09590D97F18}"
 EndProject
@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{7E97
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Infrastructure", "ServiceDesk.Infrastructure\ServiceDesk.Infrastructure.csproj", "{EA372D94-12D7-4B99-9756-49D6E9609AAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDesk.Infrastructure.Context", "ServiceDesk.Infrastructure.Context\ServiceDesk.Infrastructure.Context.csproj", "{DD79F0EF-87BB-46BB-AE81-9197FB1B5C29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDesk.Context.Infrastructure", "ServiceDesk.Context.Infrastructure\ServiceDesk.Context.Infrastructure.csproj", "{DD79F0EF-87BB-46BB-AE81-9197FB1B5C29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDesk.SmartUI", "ServiceDesk.SmartUI\ServiceDesk.SmartUI.csproj", "{B8DE03F0-C31E-4422-BEED-69A064684E42}"
 EndProject

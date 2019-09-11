@@ -17,9 +17,18 @@ namespace ServiceDesk.SchemaBuild
                 .ToDictionary(x => x.ManifestModule.Name.ToLower(), x => x);
         }
 
-       /* public Assembly GetAssembliesByContext(string context)
+        public List<Assembly> GetAssembliesByContext(string context)
         {
-            _getModuleAssembly.ke
-        }*/
+            var manifestModule = $"servicedesk.{context}";
+            var resultAssemblies = new List<Assembly>();
+
+            foreach (var key in _getModuleAssembly.Keys)
+            {
+                if (key.StartsWith(manifestModule))
+                    resultAssemblies.Add(_getModuleAssembly[key]);
+            }
+
+            return resultAssemblies;
+        }
     }
 }

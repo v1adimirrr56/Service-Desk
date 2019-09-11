@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
+import { SchemaService } from '../services/schema.service';
 
 @Component({
   selector: 'app-form-builder',
   templateUrl: './form-builder.component.html',
   styleUrls: ['./form-builder.component.sass']
 })
-export class FormBuilderComponent implements OnInit {
+export class FormBuilderComponent implements AfterViewChecked {
+  isLoaded = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private cdRef: ChangeDetectorRef, private schemaService: SchemaService) {
+    this.schemaService.getSchema('incidents', 'incident')
+      .subscribe(x => {
+        this.isLoaded = true;
+      });
   }
 
-  ngOnInit() {
-    this.http.get('api/schema/incident/incident').subscribe(x => {
-      console.log(x);
-    });
+  ngAfterViewChecked(): void {
   }
-
 }
