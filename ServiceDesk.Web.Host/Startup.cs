@@ -32,7 +32,8 @@ namespace ServiceDesk.Web.Host
         public void ConfigureServices(IServiceCollection services)
         {
             // Initialize DI
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => {
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<ModuleAssembly>();
 
             // Initialize automapper

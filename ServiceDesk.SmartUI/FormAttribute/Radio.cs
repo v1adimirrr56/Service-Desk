@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 
 namespace ServiceDesk.SmartUI.FormAttribute
 {
-    public class DropdownListAttribute : FormFiledAttribute
+    public class Radio : FormFieldAttribute
     {
         public Type Selector { get; set; }
-        public DropdownListAttribute(Type selector)
+        public Radio(Type selector)
         {
             Selector = selector;
         }

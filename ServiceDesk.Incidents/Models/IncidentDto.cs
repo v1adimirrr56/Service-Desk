@@ -10,11 +10,14 @@ namespace ServiceDesk.Incidents.Models
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        [DateTimePicker]
         public DateTime CreateDate { get; set; }
+        [Checkbox]
         public bool Archive { get; set; }
-        [DropdownList(typeof(BranchSelector))]
+        [DropDownList(typeof(BranchSelector))]
         [Required]
         public string Branch { get; set; }
+        [Radio(typeof(BranchSelector))]
         public ShareType ShareType { get; set; }
     }
 
@@ -25,3 +28,4 @@ namespace ServiceDesk.Incidents.Models
     }
 
 }
+

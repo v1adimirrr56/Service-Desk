@@ -10,12 +10,14 @@ namespace ServiceDesk.Incidents
 {
     public class IncidentsController : ServiceDeskBaseController
     {
-        public IncidentsController()
+        private readonly IIncidentsQueryableProvider _incidentsQueryableProvider;
+        public IncidentsController(IIncidentsQueryableProvider incidentsQueryableProvider)
         {
+            _incidentsQueryableProvider = incidentsQueryableProvider;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromBody]IncidentDto incident)
         {
             return Ok(new long[1 , 2]);
         }

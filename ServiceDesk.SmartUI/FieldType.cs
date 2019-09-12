@@ -7,7 +7,7 @@ namespace ServiceDesk.SmartUI
     public enum FieldType
     {
         Input,
-        DropdownList,
+        DropDownList,
         Radio,
         Checkbox,
         DateTimePicker

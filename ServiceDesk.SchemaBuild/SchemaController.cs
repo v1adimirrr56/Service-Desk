@@ -40,10 +40,10 @@ namespace ServiceDesk.SchemaBuild
                 {
                     NameField = property.Name,
                     Hidden = property.GetCustomAttribute<HiddenInputAttribute>() != null,
-                    Label = property.GetCustomAttribute<DisplayAttribute>()?.Name,
+                    Label = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name,
                     ReadOnly = property.GetCustomAttribute<ReadOnlyAttribute>()?.IsReadOnly ?? false,
                     Required = property.GetCustomAttribute<RequiredAttribute>() != null,
-                    Type = property.GetCustomAttribute<FormFiledAttribute>()?.ToString() ?? FieldType.Input.ToString()
+                    Type = property.GetCustomAttribute<FormFieldAttribute>()?.GetType().Name ?? FieldType.Input.ToString()
                 });
 
                 /*foreach (var attr in property.GetCustomAttributes(true))

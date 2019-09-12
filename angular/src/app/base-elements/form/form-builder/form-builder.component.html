@@ -1,0 +1,11 @@
+<ng-container *ngIf="isLoaded">
+  <form class="form" [formGroup]="group">
+    <ng-container
+      *ngFor="let fieldSchema of schema"
+      appDynamicFormField
+      [group]="group"
+      [formField]="fieldSchema"
+    ></ng-container>
+  </form>
+</ng-container>
+
