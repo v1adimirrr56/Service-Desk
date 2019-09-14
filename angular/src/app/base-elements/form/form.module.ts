@@ -8,8 +8,10 @@ import { FormDropDownListComponent } from './form-field/form-drop-down-list/form
 import { FormDateTimePickerComponent } from './form-field/form-date-time-picker/form-date-time-picker.component';
 import { FormRadioComponent } from './form-field/form-radio/form-radio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormFieldActiveDirective } from './form-field/form-field-active.directive';
+import { FormFieldFocusDirective } from './form-field/form-field-focus.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormLabelFocusFilledDirective } from './form-field/form-label-focus-filled.directive';
+import { CellActiveDirective } from './form-field/form-date-time-picker/cell-active.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormDropDownListComponent,
     FormDateTimePickerComponent,
     FormRadioComponent,
-    FormFieldActiveDirective
+    FormFieldFocusDirective,
+    FormLabelFocusFilledDirective,
+    CellActiveDirective
   ],
   exports: [
     FormBuilderComponent

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormField, Option } from '../models/FormField';
 
 @Component({
   selector: 'app-form-radio',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-radio.component.sass']
 })
 export class FormRadioComponent implements OnInit {
+  group: FormGroup;
+  formField: FormField;
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.formField.options = [
+      new Option('1', 'First'),
+      new Option('2', 'Second')
+    ];
   }
-
 }

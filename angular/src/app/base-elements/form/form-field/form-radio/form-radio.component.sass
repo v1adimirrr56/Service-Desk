@@ -1,0 +1,34 @@
+@import "../../../../../assets/color-variables"
+
+.form__field
+  position: relative
+  display: block
+  margin: 0 0 0.5rem 0
+  &__radio
+    position: absolute
+    opacity: 0
+    &:not(checked)+label:after
+      border: 2px solid transparent
+      transform: scale(0)
+    &:checked+label:after
+      background-color: $base-dark-color
+      transform: scale(0.5)
+    &:checked+label:before
+      border-color: $base-dark-color
+  &__label
+    position: relative
+    padding-left: 30px
+    user-select: none
+    display: inline-block
+    line-height: 19px
+    &:before, &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      margin: 1px
+      width: 12px
+      height: 12px
+      border-radius: 50%
+      border: 2px solid #5a5a5a
+      transition: .28s ease
