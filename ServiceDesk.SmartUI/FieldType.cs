@@ -10,6 +10,6 @@ namespace ServiceDesk.SmartUI
         DropDownList,
         Radio,
         Checkbox,
-        DateTimePicker
+        DatePicker
     }
 }

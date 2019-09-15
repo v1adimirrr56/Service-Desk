@@ -1,9 +1,9 @@
 ﻿using ServiceDesk.Incidents.Entities;
 using ServiceDesk.Context.Infrastructure;
-using ServiceDesk.SmartUI;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using ServiceDesk.SmartUI.FormFieldsBuilder.OptionBuilders;
 
 namespace ServiceDesk.Incidents.Selector
 {
@@ -15,7 +15,7 @@ namespace ServiceDesk.Incidents.Selector
                 .Context
                 .Set<Incident>()
                 .Take(2)
-                .Select(x => new Option { Label = x.ShareType.ToString(), Value = x.Id.ToString() })
+                .Select(x => new Option { Label = x.ShareType.ToString(), Value = x.Id })
                 .ToList();
 
             return incidentSharedType;

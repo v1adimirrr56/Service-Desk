@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ServiceDesk.SmartUI.FormAttribute
+namespace ServiceDesk.SmartUI.FormFieldAttributes
 {
-    public class Radio : FormFieldAttribute
+    public class FormFieldOptionAttribute : FormFieldAttribute
     {
         public Type Selector { get; set; }
-        public Radio(Type selector)
+        public FormFieldOptionAttribute(Type selector)
         {
             Selector = selector;
         }

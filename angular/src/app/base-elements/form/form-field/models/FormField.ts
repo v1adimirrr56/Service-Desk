@@ -7,7 +7,15 @@ export class FormField {
   readOnly?: boolean;
   options?: Option[];
   type?: FieldType;
-  required?: boolean;
+  validations?: IValidation;
+}
+
+export interface IValidation {
+  required: boolean;
+  maxLength: number;
+  minLength: number;
+  max: number;
+  min: number;
 }
 
 export class Option {

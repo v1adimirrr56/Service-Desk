@@ -4,9 +4,7 @@ using System.Text;
 
 namespace ServiceDesk.SmartUI
 {
-    public class Option
+    public class FormAttribute : Attribute
     {
-        public string Value { get; set; }
-        public string Label { get; set; }
     }
 }

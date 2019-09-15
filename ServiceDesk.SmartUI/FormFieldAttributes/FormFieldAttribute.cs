@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ServiceDesk.SmartUI.FormAttribute
+namespace ServiceDesk.SmartUI.FormFieldAttributes
 {
     public class FormFieldAttribute : Attribute
     {

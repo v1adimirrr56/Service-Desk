@@ -35,9 +35,14 @@ namespace ServiceDesk.Web.Host
             services.AddMvc(options => {
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<ModuleAssembly>();
+            services.AddHttpContextAccessor();
+            services.AddScoped<SchemaHandler>();
+            services.AddScoped<IFormFieldsBuilder, FormFieldsBuilder>();
+            
 
             // Initialize automapper
             services.InitializeAutomapper();
+            services.InitializeSelector();
 
             // Initialize contexts
             var connection = Configuration.GetConnectionString("Development");

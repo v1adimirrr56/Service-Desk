@@ -17,8 +17,12 @@ namespace ServiceDesk.Incidents
         }
 
         [HttpGet]
-        public IActionResult Get([FromBody]IncidentDto incident)
+        public IActionResult Get(IncidentDto incidentDto)
         {
+            _incidentsQueryableProvider
+                .Context
+                .Add(new Incident { Name = "Test" });
+            _incidentsQueryableProvider.Context.SaveChanges();
             return Ok(new long[1 , 2]);
         }
     }

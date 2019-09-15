@@ -4,14 +4,14 @@ import { FormGroup } from '@angular/forms';
 import { FieldType } from './models/FieldType';
 import { FormInputComponent } from './form-input/form-input.component';
 import { FormCheckboxComponent } from './form-checkbox/form-checkbox.component';
-import { FormDateTimePickerComponent } from './form-date-time-picker/form-date-time-picker.component';
+import { FormDatePickerComponent } from './form-date-picker/form-date-picker.component';
 import { FormDropDownListComponent } from './form-drop-down-list/form-drop-down-list.component';
 import { FormRadioComponent } from './form-radio/form-radio.component';
 
 const mappingFromFormTypeToFormComponent = {
   [FieldType.Input]: FormInputComponent,
   [FieldType.Checkbox]: FormCheckboxComponent,
-  [FieldType.DateTimePicker]: FormDateTimePickerComponent,
+  [FieldType.DatePicker]: FormDatePickerComponent,
   [FieldType.DropDownList]: FormDropDownListComponent,
   [FieldType.Radio]: FormRadioComponent
 };

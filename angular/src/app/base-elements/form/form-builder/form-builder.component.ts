@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
 import { SchemaService } from '../../../services/schema.service';
 import { first } from 'rxjs/operators';
 import { FormField } from '../form-field/models/FormField';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { FormGroupFields } from '../form-field/models/FormGroupFields';
 
 @Component({
@@ -14,9 +14,9 @@ export class FormBuilderComponent {
   isLoaded = false;
   schema: FormField[];
   group: FormGroup;
+  @Output() submitForm = new EventEmitter<any>();
 
   constructor(
-    private cdRef: ChangeDetectorRef,
     private schemaService: SchemaService,
     private fb: FormBuilder) {
     this.schemaService.getSchema('incidents', 'incident')
@@ -31,8 +31,24 @@ export class FormBuilderComponent {
   buildFormControl(formFields: FormField[]) {
     const group = this.fb.group({});
     formFields.forEach(x => {
-      group.addControl(x.nameField, this.fb.control(''));
+      group.addControl(x.nameField, this.fb.control('', []));
     });
     this.group = group;
+  }
+
+  private addValidators(formField: FormField): ValidatorFn[] {
+    const validations = [];
+    if (formField.validations.required !== null && formField.validations.required !== undefined)
+      validations.push(Validators.required);
+    if (formField.validations.max)
+      validations.push(Validators.max(formField.validations.max));
+    if (formField.validations.min)
+      validations.push(Validators.min(formField.validations.min));
+    if (formField.validations.maxLength)
+      validations.push(Validators.maxLength(formField.validations.maxLength));
+    if (formField.validations.minLength)
+      validations.push(Validators.minLength(formField.validations.minLength));
+
+    return validations;
   }
 }

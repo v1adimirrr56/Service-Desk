@@ -1,11 +1,13 @@
 <ng-container *ngIf="isLoaded">
-  <form class="form" [formGroup]="group">
+  <form class="form" [formGroup]="group"
+        (submit)="submitForm.emit(group)">
     <ng-container
       *ngFor="let fieldSchema of schema"
       appDynamicFormField
       [group]="group"
       [formField]="fieldSchema"
     ></ng-container>
+    <app-submit-button [group]="group"></app-submit-button>
   </form>
 </ng-container>
 

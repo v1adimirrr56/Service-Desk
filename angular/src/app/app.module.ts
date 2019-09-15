@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { SchemaService } from './services/schema.service';
 import { TabComponent } from './tab/tab.component';
 import { FormModule } from './base-elements/form/form.module';
+import { BaseElementsModule } from './base-elements/base-elements.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormModule } from './base-elements/form/form.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    BaseElementsModule,
     FormModule
   ],
   providers: [SchemaService],

@@ -366,6 +366,9 @@
               "C:\\new\\ServiceDesk\\ServiceDesk.Context.Infrastructure\\ServiceDesk.Context.Infrastructure.csproj": {
                 "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Context.Infrastructure\\ServiceDesk.Context.Infrastructure.csproj"
               },
+              "C:\\new\\ServiceDesk\\ServiceDesk.Incidents\\ServiceDesk.Incidents.csproj": {
+                "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Incidents\\ServiceDesk.Incidents.csproj"
+              },
               "C:\\new\\ServiceDesk\\ServiceDesk.Infrastructure\\ServiceDesk.Infrastructure.csproj": {
                 "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Infrastructure\\ServiceDesk.Infrastructure.csproj"
               },
@@ -449,6 +452,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",

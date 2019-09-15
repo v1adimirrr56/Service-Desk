@@ -1241,6 +1241,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AutoMapper": "8.1.1",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "ServiceDesk.Context.Infrastructure": "1.0.0"
         },
         "compile": {

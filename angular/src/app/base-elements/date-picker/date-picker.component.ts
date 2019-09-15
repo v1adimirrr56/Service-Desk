@@ -1,26 +1,11 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-  QueryList,
-  Renderer2,
-  ViewChildren
-} from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormField } from '../models/FormField';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 
 @Component({
-  selector: 'app-form-date-time-picker',
-  templateUrl: './form-date-time-picker.component.html',
-  styleUrls: ['./form-date-time-picker.component.sass']
+  selector: 'app-date-picker',
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.sass']
 })
-export class FormDateTimePickerComponent implements OnInit, AfterViewInit {
-  group: FormGroup;
-  formField: FormField;
+export class DatePickerComponent implements OnInit, AfterViewInit {
   today = new Date();
   currentDate = this.today;
   daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'];
@@ -52,9 +37,10 @@ export class FormDateTimePickerComponent implements OnInit, AfterViewInit {
 
   checkActiveDate(day) {
     if (day === this.chosenDate.getDate()
-        && this.currentDate.getMonth() === this.chosenDate.getMonth()
-        && this.currentDate.getFullYear() === this.chosenDate.getFullYear())
-    return true;
+      && this.currentDate.getMonth() === this.chosenDate.getMonth()
+      && this.currentDate.getFullYear() === this.chosenDate.getFullYear()) {
+      return true;
+    }
 
     return false;
   }

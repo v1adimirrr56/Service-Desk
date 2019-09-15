@@ -5,13 +5,14 @@ import { FormInputComponent } from './form-field/form-input/form-input.component
 import { DynamicFormFieldDirective } from './form-field/dynamic-form-field.directive';
 import { FormCheckboxComponent } from './form-field/form-checkbox/form-checkbox.component';
 import { FormDropDownListComponent } from './form-field/form-drop-down-list/form-drop-down-list.component';
-import { FormDateTimePickerComponent } from './form-field/form-date-time-picker/form-date-time-picker.component';
+import { FormDatePickerComponent } from './form-field/form-date-picker/form-date-picker.component';
 import { FormRadioComponent } from './form-field/form-radio/form-radio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormFieldFocusDirective } from './form-field/form-field-focus.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormLabelFocusFilledDirective } from './form-field/form-label-focus-filled.directive';
-import { CellActiveDirective } from './form-field/form-date-time-picker/cell-active.directive';
+import { BaseElementsModule } from '../base-elements.module';
+import { SubmitButtonComponent } from './form-field/submit-button/submit-button.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,11 @@ import { CellActiveDirective } from './form-field/form-date-time-picker/cell-act
     DynamicFormFieldDirective,
     FormCheckboxComponent,
     FormDropDownListComponent,
-    FormDateTimePickerComponent,
+    FormDatePickerComponent,
     FormRadioComponent,
     FormFieldFocusDirective,
     FormLabelFocusFilledDirective,
-    CellActiveDirective
+    SubmitButtonComponent
   ],
   exports: [
     FormBuilderComponent
@@ -33,14 +34,15 @@ import { CellActiveDirective } from './form-field/form-date-time-picker/cell-act
     FormInputComponent,
     FormCheckboxComponent,
     FormDropDownListComponent,
-    FormDateTimePickerComponent,
+    FormDatePickerComponent,
     FormRadioComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BaseElementsModule
   ]
 })
 export class FormModule { }

@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/Incidents",
+      "launchUrl": "api/schema/Incidents/Incident",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
