@@ -46,7 +46,7 @@ namespace ServiceDesk.SchemaBuild
         {
             _factoryFormFields = new List<BuildFormField>
             {
-                new CheckboxBuilder(new OptionsBuilder(queryableProvider, _httpContextAccessor)),
+                new CheckboxBuilder(),
                 new DatePickerBuilder(),
                 new DropDownListBuilder(new OptionsBuilder(queryableProvider, _httpContextAccessor)),
                 new RadioBuilder(new OptionsBuilder(queryableProvider, _httpContextAccessor)),

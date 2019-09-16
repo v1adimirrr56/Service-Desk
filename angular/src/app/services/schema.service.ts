@@ -9,7 +9,7 @@ export class SchemaService {
   private url = environment.domain + 'api/Schema/';
   constructor(private http: HttpClient) { }
 
-  public getSchema(context: string, schema: string): Observable<FormField[]> {
-    return this.http.get<FormField[]>(this.url + `${context}` + `/${schema}`);
+  public getSchema(schemaUrl: string): Observable<FormField[]> {
+    return this.http.get<FormField[]>(this.url + `${schemaUrl}`);
   }
 }

@@ -1,13 +1,18 @@
-.form__field
-  position: relative
-  &__input
-    outline: 0
-    border: 0
-    border-bottom: 1px solid #d9d9d9
-    margin: 0 0 .8rem 0
-    padding: .6rem 0 .4rem 0
-  &__label
-    position: absolute
-    top: 10px
-    color: #757575
-    transform-origin: 0 100%
+@import '../../../../../assets/form-input-fields'
+@import '../../../../../assets/color-variables'
+
+.options
+  position: absolute
+  top: 32px
+  z-index: 9999
+  border: 1px solid #cccecf
+  background-color: #fff
+  width: 100%
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 7px 0 rgba(0, 0, 0, 0.1)
+  &__item
+    padding: 9px
+    transition: 0.15s ease-in-out
+    &:hover
+      background-color: $base-color
+      color: #fff
+      cursor: pointer

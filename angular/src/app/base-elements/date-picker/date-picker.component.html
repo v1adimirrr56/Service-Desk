@@ -1,42 +1,51 @@
 <div class="datepicker">
   <div class="datepicker__header">
-    <div class="datepicker__today__month"
-         (click)="clickMonth()">
-      {{getCurrentMonth()}}
+    <div class="datepicker__today">
+      <div class="datepicker__today__month"
+           (click)="clickMonth()">
+        {{getCurrentMonth()}}
+      </div>
+      <div class="datepicker__today__year">
+        {{getCurrentYear()}}
+      </div>
     </div>
-    <div class="datepicker__today__year">
-      {{getCurrentYear()}}
+    <div class="datepicker__month">
+      <div class="datepicker__month_previous"
+           (click)="previousClick()">
+        <app-svg [attr.class]="chevronLeft" [svgIcon]="chevronLeft"></app-svg>
+      </div>
+      <div class="datepicker__month_next"
+           (click)="nextClick()">
+        <app-svg [attr.class]="chevronRight" [svgIcon]="chevronRight"></app-svg>
+      </div>
     </div>
-    <div class="datepicker__month_previous"
-         (click)="previousClick()"
-    >&#60;</div>
-    <div class="datepicker__month_next"
-         (click)="nextClick()"
-    >&#62;</div>
   </div>
-  <table class="datepicker__days">
-    <thead class="datepicker__days__header">
-    <tr class="datepicker__days__header__row__item">
-      <th *ngFor="let dayOfWeek of daysOfWeek"
-          class="datepicker__days__header__row__item">
-        {{dayOfWeek}}
-      </th>
-    </tr>
-    </thead>
-    <tbody class="datepicker__days__body"
-           appCellActive
-           [selectCell]="selectedCell"
-           [initialDate]="initialDate"
-           [allCells]="cellsDay">
-    <tr *ngFor="let rows of calendarMatrix" class="datepicker__days__body__row">
-      <td *ngFor="let cell of rows" class="datepicker__days__body__row__item">
+  <div class="datepicker__body">
+    <table class="datepicker__days">
+      <thead class="datepicker__days__header">
+      <tr class="datepicker__days__header__row__item">
+        <th *ngFor="let dayOfWeek of daysOfWeek"
+            class="datepicker__days__header__row__item">
+          {{dayOfWeek}}
+        </th>
+      </tr>
+      </thead>
+      <tbody class="datepicker__days__body"
+             appCellActive
+             [selectCell]="selectedCell"
+             [initialDate]="initialDate"
+             [allCells]="cellsDay">
+      <tr *ngFor="let rows of calendarMatrix; let row = index" class="datepicker__days__body__row">
+        <td *ngFor="let cell of rows; let column = index" class="datepicker__days__body__row__item">
           <span class="datepicker__days__body__row__cell"
                 #cellDay
-                [ngClass]="{'datepicker__days__body__row__cell_active' : checkActiveDate(cell)}"
+                [ngClass]="{'datepicker__days__body__row__cell_active' : !checkDisable(row, column) && checkActiveDate(cell),
+                            'datepicker__days__body__row__cell_disable' : checkDisable(row, column)}"
                 (click)="selectDay(cellDay, cell)"
           >{{cell}}</span>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

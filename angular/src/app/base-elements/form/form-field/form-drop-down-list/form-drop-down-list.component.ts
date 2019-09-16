@@ -1,20 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroupField } from '../models/FormGroupFields';
-import { Option } from '../models/FormField';
+import { FormInputComponent } from '../form-input/form-input.component';
 
 @Component({
   selector: 'app-form-drop-down-list',
   templateUrl: './form-drop-down-list.component.html',
   styleUrls: ['./form-drop-down-list.component.sass']
 })
-export class FormDropDownListComponent extends FormGroupField implements OnInit{
-  isFocus: boolean;
-  inputValue;
-
+export class FormDropDownListComponent extends FormGroupField implements OnInit {
+  isShow = true;
+  forceActive: boolean;
   ngOnInit(): void {
-    this.formField.options = [
-      new Option('1', 'Drop 1'),
-      new Option('2', 'Drop 2')
-    ];
+    this.forceActive = true;
+  }
+  @ViewChild('input') inputComponent: FormInputComponent;
+
+  chooseOption(label: string) {
+    this.inputComponent.inputValue = label;
+    this.forceActive = false;
+  }
+
+  focusChanged($event: boolean) {
+    this.isShow = $event;
   }
 }

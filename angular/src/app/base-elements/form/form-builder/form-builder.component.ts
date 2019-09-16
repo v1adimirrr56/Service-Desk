@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SchemaService } from '../../../services/schema.service';
 import { first } from 'rxjs/operators';
 import { FormField } from '../form-field/models/FormField';
@@ -10,22 +10,17 @@ import { FormGroupFields } from '../form-field/models/FormGroupFields';
   templateUrl: './form-builder.component.html',
   styleUrls: ['./form-builder.component.sass']
 })
-export class FormBuilderComponent {
+export class FormBuilderComponent implements OnInit {
   isLoaded = false;
   schema: FormField[];
   group: FormGroup;
+
+  @Input() schemaUrl;
   @Output() submitForm = new EventEmitter<any>();
 
   constructor(
     private schemaService: SchemaService,
     private fb: FormBuilder) {
-    this.schemaService.getSchema('incidents', 'incident')
-      .pipe(first())
-      .subscribe(x => {
-        this.schema = x;
-        this.buildFormControl(this.schema);
-        this.isLoaded = true;
-      });
   }
 
   buildFormControl(formFields: FormField[]) {
@@ -50,5 +45,15 @@ export class FormBuilderComponent {
       validations.push(Validators.minLength(formField.validations.minLength));
 
     return validations;
+  }
+
+  ngOnInit(): void {
+    this.schemaService.getSchema(this.schemaUrl)
+      .pipe(first())
+      .subscribe(x => {
+        this.schema = x;
+        this.buildFormControl(this.schema);
+        this.isLoaded = true;
+      });
   }
 }

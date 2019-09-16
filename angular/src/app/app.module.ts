@@ -8,13 +8,14 @@ import { SchemaService } from './services/schema.service';
 import { TabComponent } from './tab/tab.component';
 import { FormModule } from './base-elements/form/form.module';
 import { BaseElementsModule } from './base-elements/base-elements.module';
-
+import { CreateIncidentComponent } from './incident/create-incident/create-incident.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    TabComponent
+    TabComponent,
+    CreateIncidentComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +25,9 @@ import { BaseElementsModule } from './base-elements/base-elements.module';
     FormModule
   ],
   providers: [SchemaService],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

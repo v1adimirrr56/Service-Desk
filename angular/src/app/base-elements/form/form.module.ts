@@ -8,11 +8,16 @@ import { FormDropDownListComponent } from './form-field/form-drop-down-list/form
 import { FormDatePickerComponent } from './form-field/form-date-picker/form-date-picker.component';
 import { FormRadioComponent } from './form-field/form-radio/form-radio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormFieldFocusDirective } from './form-field/form-field-focus.directive';
+import { FormFieldFocusDirective } from './form-field/form-input/form-field-focus.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormLabelFocusFilledDirective } from './form-field/form-label-focus-filled.directive';
+import { FormLabelFocusFilledDirective } from './form-field/form-input/form-label-focus-filled.directive';
 import { BaseElementsModule } from '../base-elements.module';
 import { SubmitButtonComponent } from './form-field/submit-button/submit-button.component';
+import { FormContainerComponent } from './form-container/form-container.component';
+import { DatePickerComponent } from '../date-picker/date-picker.component';
+import { ShowDatePickerDirective } from './form-field/form-date-picker/show-date-picker.directive';
+import { OutsideDirective } from './form-field/form-date-picker/outside.directive';
+import { ShowDropDownListDirective } from './form-field/form-drop-down-list/show-drop-down-list.directive';
 
 @NgModule({
   declarations: [
@@ -25,17 +30,23 @@ import { SubmitButtonComponent } from './form-field/submit-button/submit-button.
     FormRadioComponent,
     FormFieldFocusDirective,
     FormLabelFocusFilledDirective,
-    SubmitButtonComponent
+    SubmitButtonComponent,
+    FormContainerComponent,
+    ShowDatePickerDirective,
+    OutsideDirective,
+    ShowDropDownListDirective
   ],
   exports: [
-    FormBuilderComponent
+    FormBuilderComponent,
+    FormContainerComponent
   ],
   entryComponents: [
     FormInputComponent,
     FormCheckboxComponent,
     FormDropDownListComponent,
     FormDatePickerComponent,
-    FormRadioComponent
+    FormRadioComponent,
+    DatePickerComponent
   ],
   imports: [
     CommonModule,

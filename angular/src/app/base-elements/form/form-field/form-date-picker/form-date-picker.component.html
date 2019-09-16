@@ -1,2 +1,10 @@
-<input type="text" placeholder="MM/DD/YYYY">
-<app-date-picker style="display: none"></app-date-picker>
+<div class="datepicker_container" appOutside (outsideEvent)="isShow = $event">
+  <app-input
+    [group]="group"
+    [formField]="formField"
+    [forceActive]="isShow"
+    (click)="clickHandler()">
+  </app-input>
+  <app-date-picker
+    *appShowDatePicker="isShow"></app-date-picker>
+</div>

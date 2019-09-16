@@ -19,26 +19,104 @@ namespace ServiceDesk.Context.Incidents.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Branch", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NameBranch");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brabches");
+                });
+
             modelBuilder.Entity("ServiceDesk.Incidents.Entities.Incident", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Archive");
+                    b.Property<long?>("BranchId");
 
-                    b.Property<string>("Branch")
-                        .IsRequired();
+                    b.Property<string>("ContactEmail");
+
+                    b.Property<string>("ContactPhone");
+
+                    b.Property<int>("Count");
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("Name");
-
                     b.Property<int>("ShareType");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BranchId");
+
                     b.ToTable("Incidents");
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Job", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("IncidentId");
+
+                    b.Property<string>("JobTitle");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IncidentId");
+
+                    b.ToTable("Job");
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Manager", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Managers");
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Priority", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PriorityType");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Priorities");
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Incident", b =>
+                {
+                    b.HasOne("ServiceDesk.Incidents.Entities.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId");
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Job", b =>
+                {
+                    b.HasOne("ServiceDesk.Incidents.Entities.Incident", "Incident")
+                        .WithMany("Incidents")
+                        .HasForeignKey("IncidentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

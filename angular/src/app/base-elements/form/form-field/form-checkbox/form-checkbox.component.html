@@ -1,13 +1,15 @@
-<div *ngFor="let option of formField.options; let i = index" class="form__field"
+<div class="form__field"
      [formGroup]="group">
-  <input class="form__field__checkbox"
-         id="{{option.label + i}}checkbox"
-         [attr.name]="formField.nameField"
-         [formControlName]="formField.nameField"
-         [value]="option.value"
-         type="checkbox"/>
-  <label class="form__field__label"
-         for="{{option.label + i}}checkbox"
-  >{{ option.label }}</label>
+  <div class="form__field__item" *ngFor="let option of formField.options; let i = index">
+    <input class="form__field__checkbox"
+           id="{{option.label + i}}checkbox"
+           [attr.name]="formField.nameField"
+           [formControlName]="formField.nameField"
+           [value]="option.value"
+           type="checkbox"/>
+    <label class="form__field__label"
+           for="{{option.label + i}}checkbox"
+    >{{ option.label }}</label>
+  </div>
 </div>
 

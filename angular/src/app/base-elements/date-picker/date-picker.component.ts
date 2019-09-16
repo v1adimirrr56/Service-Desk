@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { MONTHS } from './Months';
 
 @Component({
   selector: 'app-date-picker',
@@ -9,12 +10,15 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   today = new Date();
   currentDate = this.today;
   daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'];
-  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  chevronLeft = 'chevronLeft';
+  chevronRight = 'chevronRight';
+  months = MONTHS;
   calendarMatrix;
   selectedCell;
   chosenDate = new Date();
   initialDate = new Date();
   @ViewChildren('cellDay') cellsDay: QueryList<ElementRef>;
+  countDaysForNextMonth = 0;
 
   constructor(private cd: ChangeDetectorRef) {
 
@@ -45,6 +49,15 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     return false;
   }
 
+  checkDisable(row, column) {
+    const cell = row * 7 + column;
+    if (cell < this.currentFirstDayOfWeek()
+        || cell > 42 - this.countDaysForNextMonth)
+      return true;
+
+    return false;
+  }
+
   previousClick() {
     this.currentDate.setMonth(this.currentDate.getMonth() - 1);
     this.calendarMatrix = this.getMatrixDays();
@@ -64,21 +77,30 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
 
   }
 
-  getMatrixDays() {
-    const previousMonthLastDay = this
-      .getDaysInMonth(this.currentDate.getMonth() - 1);
-
-    const currentFirstDayOfWeek = new Date(
+  currentFirstDayOfWeek() {
+    return new Date(
       this.currentDate.getFullYear(),
       this.currentDate.getMonth(),
       1
     ).getDay();
+  }
 
-    const currentLastDayOfWeek = new Date(
+  currentLastDayOfWeek() {
+    return new Date(
       this.currentDate.getFullYear(),
       this.currentDate.getMonth(),
       this.getDaysInMonth(this.currentDate.getMonth())
     ).getDay();
+  }
+
+  getMatrixDays() {
+    console.log(this.currentFirstDayOfWeek())
+    console.log(this.currentLastDayOfWeek())
+
+    const previousMonthLastDay = this
+      .getDaysInMonth(this.currentDate.getMonth() - 1);
+    const currentFirstDayOfWeek = this.currentFirstDayOfWeek();
+    const currentLastDayOfWeek = this.currentLastDayOfWeek();
     const calendarMatrix = [];
     const allDaysForCurrentMonth = this.getAllDaysForCurrentMonth();
 
@@ -87,12 +109,15 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
       allDaysForCurrentMonth.unshift(prevLastDay);
     }
 
-    for (let i = currentLastDayOfWeek + 1,
-           day = 1; i < 7; i++, day++) {
-      allDaysForCurrentMonth.push(day);
+    let startDayNextMonth = 1;
+    while (allDaysForCurrentMonth.length < 42)
+    {
+      allDaysForCurrentMonth.push(startDayNextMonth);
+      startDayNextMonth++;
     }
+    this.countDaysForNextMonth = startDayNextMonth;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       calendarMatrix[i] = [];
       for (let j = 0; j < 7; j++) {
         calendarMatrix[i][j] = allDaysForCurrentMonth[i * 7 + j];

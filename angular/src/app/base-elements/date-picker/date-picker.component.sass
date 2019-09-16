@@ -1,30 +1,63 @@
-.datepicker__days__header__row__item
-  font-size: 13px
-  color: #A9A9A9
-  font-weight: 400
-  text-align: center
+@import "../../../assets/color-variables"
+
 .datepicker
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 7px 0 rgba(0, 0, 0, 0.1)
-.datepicker__header
-  display: flex
-  justify-content: space-around
-  padding-bottom: 5px
-.datepicker
-  display: inline-flex
-  flex-flow: column
+  position: absolute
+  z-index: 9999
+  background-color: #fff
   padding: 17px
-.datepicker__days__body__row__cell_active
-  border-radius: 50%
-  background-color: #c073de
-  color: white
-  display: block
-.datepicker__days__body__row__cell
-  display: block
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 7px 0 rgba(0, 0, 0, 0.1)
+  top: 35px
   user-select: none
+  &__header
+    display: flex
+    justify-content: space-between
+    padding-bottom: 5px
+  &__month
+    width: 40px
+    display: flex
+    justify-content: space-between
+  &__today
+    display: flex
+    width: 113px
+    justify-content: space-between
+  &__days__header__row__item
+    font-size: 13px
+    color: $base-color
+    font-weight: 400
+    text-align: center
+  &__body
+    min-width: 219px
+    min-height: 168px
+  &__days__body__row
+    &__cell_active
+      border-radius: 50%
+      background-color: #c073de
+      color: white
+      display: block
+    &__cell_disable
+      color: #94A1B3
+      opacity: 0.5
+      pointer-events: none
+    &__cell
+      display: block
+      user-select: none
+      cursor: pointer
+      transition: 0.15s ease-in-out
+      &:not(.datepicker__days__body__row__cell_active):hover
+        background-color: rgba(192, 115, 222, 0.4)
+        border-radius: 50%
+    &__item
+      text-align: center
+      width: 27px
+      height: 27px
+      line-height: 27px
+      color: #475466
+/deep/ .chevronLeft svg, /deep/ .chevronRight svg
+  height: 14px
+  width: 14px
+  opacity: 0.4
   cursor: pointer
-.datepicker__days__body__row__item
-  text-align: center
-  width: 27px
-  height: 27px
-  line-height: 27px
-  color: #475466
+  transition: 0.15s ease-in-out
+  &:hover
+    opacity: 1
+    fill: $base-color

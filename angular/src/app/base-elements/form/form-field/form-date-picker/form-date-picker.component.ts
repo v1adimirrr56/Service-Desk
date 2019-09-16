@@ -1,17 +1,6 @@
 import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-  QueryList,
-  Renderer2,
-  ViewChildren
+  Component, HostListener,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormField } from '../models/FormField';
 import { FormGroupField } from '../models/FormGroupFields';
 
 @Component({
@@ -20,6 +9,9 @@ import { FormGroupField } from '../models/FormGroupFields';
   styleUrls: ['./form-date-picker.component.sass']
 })
 export class FormDatePickerComponent extends FormGroupField {
+  isShow: boolean;
 
-
+  clickHandler() {
+    this.isShow = !this.isShow;
+  }
 }

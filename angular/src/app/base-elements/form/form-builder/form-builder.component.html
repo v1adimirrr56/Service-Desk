@@ -2,7 +2,7 @@
   <form class="form" [formGroup]="group"
         (submit)="submitForm.emit(group)">
     <ng-container
-      *ngFor="let fieldSchema of schema"
+      *ngFor="let fieldSchema of schema; let i = index"
       appDynamicFormField
       [group]="group"
       [formField]="fieldSchema"

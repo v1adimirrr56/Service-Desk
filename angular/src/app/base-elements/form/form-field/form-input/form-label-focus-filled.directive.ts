@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 import { AnimationBuilder, AnimationFactory, AnimationPlayer } from '@angular/animations';
 import {
   filledFocusFormLabelAnimation, filledFocusoutFormLabelAnimation,
@@ -10,11 +10,6 @@ import {
   selector: '[appFormLabelFocusFilled]'
 })
 export class FormLabelFocusFilledDirective {
-  private factoryFocusAnimation: AnimationFactory;
-  private factoryFocusoutAnimation: AnimationFactory;
-  private factoryFilledFocusAnimation: AnimationFactory;
-  private factoryFilledFocusoutAnimation: AnimationFactory;
-  private player: AnimationPlayer;
 
   constructor(
     private elementRef: ElementRef,
@@ -27,7 +22,6 @@ export class FormLabelFocusFilledDirective {
   }
 
   @Input() set appFormLabelFocusFilled(isFocus: boolean) {
-
     if (this.inputValue) {
       if (isFocus) {
         this.player = this.factoryFilledFocusAnimation.create(this.elementRef.nativeElement);
@@ -43,7 +37,13 @@ export class FormLabelFocusFilledDirective {
     }
     this.player.play();
   }
+  private factoryFocusAnimation: AnimationFactory;
+  private factoryFocusoutAnimation: AnimationFactory;
+  private factoryFilledFocusAnimation: AnimationFactory;
+  private factoryFilledFocusoutAnimation: AnimationFactory;
+  private player: AnimationPlayer;
 
   @Input() inputValue;
   @Output() appFormLabelFocusFilledChange = new EventEmitter<boolean>();
+
 }

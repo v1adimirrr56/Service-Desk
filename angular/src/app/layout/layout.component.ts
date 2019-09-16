@@ -12,8 +12,4 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitData($event) {
-    console.log($event);
-  }
-
 }

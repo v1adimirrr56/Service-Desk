@@ -34,8 +34,9 @@ namespace ServiceDesk.SchemaBuild
             var properties = assembliesByContext
                 .SelectMany(x => x.DefinedTypes)
                 .Where(x => x.GetCustomAttribute<FormAttribute>() != null)
-                .Single(x => x.Name.StartsWith(schema))
+                .Single(x => x.Name.ToLower().StartsWith(schema.ToLower()))
                 .GetProperties();
+
             IQueryableProvider queryableProvider = null;
 
             if ("incidents" == context.ToLower())
