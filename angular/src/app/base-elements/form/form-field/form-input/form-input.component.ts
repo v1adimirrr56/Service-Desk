@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormField } from '../models/FormField';
 import { FormGroup } from '@angular/forms';
 import { FormGroupField } from '../models/FormGroupFields';
+import { $e } from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-input',
@@ -9,20 +10,21 @@ import { FormGroupField } from '../models/FormGroupFields';
   styleUrls: ['./form-input.component.sass']
 })
 export class FormInputComponent extends FormGroupField {
-  @Input() isFocus = false;
-  @Input() forceActive = false;
-  inputValue
-  @Input('inputValue') set setinputValue(value) {
-    console.log(value)
-    this.inputValue = value;
-  }
+  @Input() inputValue;
   @Input() group: FormGroup;
   @Input() formField: FormField;
-
-  @Output() isFocusChange = new EventEmitter<boolean>();
+  @Input() forceFocus;
+  @Output() formFieldFocusChanged = new EventEmitter();
+  @Output() tabKeyEvent = new EventEmitter();
+  getInputValue() {
+    return this.group.get(this.formField.nameField).value;
+  }
 
   focusChanged($event) {
-    this.isFocus = $event;
-    this.isFocusChange.emit($event);
+    this.formFieldFocusChanged.emit($event);
+  }
+
+  tabKeyEventHandler($event: boolean) {
+    this.tabKeyEvent.emit($event);
   }
 }

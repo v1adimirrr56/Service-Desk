@@ -1,18 +1,15 @@
 <div class="form__field"
-     appInputOutside
      [formGroup]="group">
-  <label class="form__field__label"
-         [appFormLabelFocusFilled]="isFocus"
-         [inputValue]="inputValue"
-         [attr.for]="formField.nameField"
-  >{{ formField.label }}</label>
   <input class="form__field__input"
          [formControlName]="formField.nameField"
-         [appFormFieldFocus]="isFocus"
-         (appFormFieldFocusChange)="focusChanged($event)"
-         [forceActive]="forceActive"
-         [(ngModel)]="inputValue"
          [attr.id]="formField.nameField"
+         [ngClass]="{ filled: getInputValue(),
+                      forceFocus: forceFocus}"
+         appFormFieldFocus
+         (appFormFieldFocusChanged)="focusChanged($event)"
+         (tabKey)="tabKeyEventHandler($event)"
          type="text"/>
-  <ng-content></ng-content>
+  <label class="form__field__label"
+         [attr.for]="formField.nameField"
+  >{{ formField.label }}</label>
 </div>

@@ -1,13 +1,17 @@
+<div class="dropdownlist" [formGroup]="group"
+     appShowDropDownList
+     (tabKeyEvent)="tabKeyEventHandler($event)">
   <app-input
-      #input
-      [group]="group"
-      [formField]="formField"
-      [forceActive]="forceActive"
-      (isFocusChange)="focusChanged($event)">
-    <ul class="options" *appShowDropDownList="isShow">
-      <li class="options__item" *ngFor="let option of formField.options">
-        <span class="options__item__label" (click)="chooseOption(option.label)">{{option.label}}</span>
-        <span class="options__item__value">{{option.value}}</span>
-      </li>
-    </ul>
-  </app-input>
+    #input
+    [group]="group"
+    [formField]="formField"
+    (formFieldFocusChanged)="focusChangeEvent($event)"
+  ></app-input>
+  <div class="options" [ngClass]="{active: isShow, inactive: !isShow}">
+    <a class="options__item" *ngFor="let option of formField.options; let i = index"
+       (click)="chooseOption(option.label)">
+      {{option.label}}
+    </a>
+  </div>
+</div>
+

@@ -2,8 +2,7 @@
   <app-input
     [group]="group"
     [formField]="formField"
-    [forceActive]="isShow"
-    (click)="clickHandler()">
+    (click)="clickHandler($event)">
   </app-input>
   <app-date-picker
     *appShowDatePicker="isShow"></app-date-picker>

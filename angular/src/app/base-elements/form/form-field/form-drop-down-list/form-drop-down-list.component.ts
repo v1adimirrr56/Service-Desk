@@ -1,5 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroupField } from '../models/FormGroupFields';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import { FormInputComponent } from '../form-input/form-input.component';
 
 @Component({
@@ -7,20 +12,38 @@ import { FormInputComponent } from '../form-input/form-input.component';
   templateUrl: './form-drop-down-list.component.html',
   styleUrls: ['./form-drop-down-list.component.sass']
 })
-export class FormDropDownListComponent extends FormGroupField implements OnInit {
-  isShow = true;
-  forceActive: boolean;
-  ngOnInit(): void {
-    this.forceActive = true;
+export class FormDropDownListComponent extends FormInputComponent {
+  isShow;
+  inputValue;
+  @ViewChild('input') input: FormInputComponent;
+
+  @HostListener('document:click', ['$event']) appShowDropDownList(event) {
+    if (!this.elementRef.nativeElement.children[0].contains(event.target)) {
+      this.isShow = false;
+      this.input.forceFocus = false;
+    }
   }
-  @ViewChild('input') inputComponent: FormInputComponent;
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    super();
+  }
 
   chooseOption(label: string) {
-    this.inputComponent.inputValue = label;
-    this.forceActive = false;
+    this.group.get(this.formField.nameField).setValue(label);
+    this.inputValue = label;
+    this.input.forceFocus = false;
+    this.isShow = false;
   }
 
-  focusChanged($event: boolean) {
-    this.isShow = $event;
+  focusChangeEvent($event) {
+    if ($event) {
+      this.input.forceFocus = $event;
+      this.isShow = $event;
+    }
+  }
+
+  tabKeyEventHandler($event: boolean) {
+    this.input.forceFocus = false;
+    this.isShow = false;
   }
 }

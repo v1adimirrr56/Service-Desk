@@ -1,25 +1,24 @@
-import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  Renderer2,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 
 @Directive({
   selector: '[appShowDropDownList]'
 })
-export class ShowDropDownListDirective implements OnInit {
-  isShow: boolean;
-  @Input('appShowDropDownList') set setIsShow(value) {
-    if (value) {
-      this.container.createEmbeddedView(this.template);
-    } else {
-      this.container.clear();
-    }
-    this.isShow = value;
-  }
+export class ShowDropDownListDirective {
+  @Output() tabKeyEvent = new EventEmitter<boolean>();
 
-  constructor(private container: ViewContainerRef,
-              private template: TemplateRef<object>)
-  {
-  }
-
-  ngOnInit(): void {
+  @HostListener('keydown', ['$event']) appShowDropDownList(event) {
+    if (event.keyCode === 9)
+      this.tabKeyEvent.emit(true);
   }
 
 }

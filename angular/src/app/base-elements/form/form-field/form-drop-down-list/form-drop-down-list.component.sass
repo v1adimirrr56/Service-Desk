@@ -1,6 +1,8 @@
 @import '../../../../../assets/form-input-fields'
 @import '../../../../../assets/color-variables'
-
+.dropdownlist
+  display: inline-block
+  position: relative
 .options
   position: absolute
   top: 32px
@@ -12,7 +14,16 @@
   &__item
     padding: 9px
     transition: 0.15s ease-in-out
-    &:hover
+    display: block
+    text-decoration: none
+    color: #313131
+    &:hover, &:focus
+      outline: none
       background-color: $base-color
       color: #fff
       cursor: pointer
+.active
+  display: block
+.inactive
+  display: none
+

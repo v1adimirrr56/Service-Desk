@@ -11,7 +11,7 @@ import { FormGroupField } from '../models/FormGroupFields';
 export class FormDatePickerComponent extends FormGroupField {
   isShow: boolean;
 
-  clickHandler() {
-    this.isShow = !this.isShow;
+  clickHandler($event) {
+    this.isShow = true;
   }
 }
