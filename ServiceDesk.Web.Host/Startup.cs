@@ -14,6 +14,12 @@ using Microsoft.Extensions.Options;
 using ServiceDesk.Context.Crashes;
 using ServiceDesk.Context.Incidents;
 using ServiceDesk.Context.Infrastructure;
+using ServiceDesk.Incidents.Actions;
+using ServiceDesk.Incidents.Entities;
+using ServiceDesk.Incidents.Models;
+using ServiceDesk.Incidents.Service;
+using ServiceDesk.Infrastructure.ActionHandler;
+using ServiceDesk.Infrastructure.ServiceHandler;
 using ServiceDesk.SchemaBuild;
 using ServiceDesk.Web.Host.Configure;
 
@@ -32,17 +38,20 @@ namespace ServiceDesk.Web.Host
         public void ConfigureServices(IServiceCollection services)
         {
             // Initialize DI
-            services.AddMvc(options => {
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => {}).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<ModuleAssembly>();
             services.AddHttpContextAccessor();
             services.AddScoped<SchemaHandler>();
             services.AddScoped<IFormFieldsBuilder, FormFieldsBuilder>();
-            
+            services.AddScoped<IServiceHandler<IncidentDto>, CreateIncidentService>();
+
+            services.InitializeServiceHandlers();
+            services.InitializeServiceQueryHandlers();
+            services.InitializeActionHandlers();
+            services.InitializeSelector();
 
             // Initialize automapper
             services.InitializeAutomapper();
-            services.InitializeSelector();
 
             // Initialize contexts
             var connection = Configuration.GetConnectionString("Development");

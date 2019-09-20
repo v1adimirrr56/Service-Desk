@@ -1,8 +1,9 @@
-<ng-container *ngIf="isLoaded">
+<ng-template #loading>Loading...</ng-template>
+<ng-container *ngIf="isLoaded; else loading">
   <form class="form" [formGroup]="group"
         (submit)="submitForm.emit(group)">
     <ng-container
-      *ngFor="let fieldSchema of schema; let i = index"
+      *ngFor="let fieldSchema of schemaWithoutHidden; let i = index"
       appDynamicFormField
       [group]="group"
       [formField]="fieldSchema"

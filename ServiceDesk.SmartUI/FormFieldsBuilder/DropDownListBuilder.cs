@@ -3,13 +3,14 @@ using ServiceDesk.SmartUI.FormFieldsBuilder.OptionBuilders;
 using ServiceDesk.SmartUI.FormFieldsFactory;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text;
 
 namespace ServiceDesk.SmartUI.FormFieldsBuilder
 {
-    public class DropDownListBuilder : BuildFormField
+    public class DropDownListBuilder : FormFieldOptionBuilder
     {
         private IBuildOptions _buildOptions;
         public DropDownListBuilder(IBuildOptions buildOptions)
@@ -20,19 +21,22 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
         public override FormField Build(PropertyInfo property)
         {
             BuildValidation(property);
+            BuildFormFieldOptions(property, _buildOptions);
+            BuildShowProperty(property);
+
             FormField formfield = new FormField
             {
-                NameField = property.Name,
-                Label = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name,
-                Validation = Validations,
+                NameField = char.ToLower(property.Name[0]) + property.Name.Substring(1),
+                ShowProperties = ShowProperties,
+                Validations = Validations,
                 Type = FieldType.DropDownList.ToString(),
-                Options = _buildOptions.BuildOptions(property.GetCustomAttribute<DropDownList>())
+                Options = Options
             };
 
             return formfield;
         }
 
         public override bool CheckFormFieldType(PropertyInfo input)
-            => input.GetCustomAttribute<DropDownList>() == null ? false : true;
+            => input.GetCustomAttribute<DropDownList>() != null;
     }
 }

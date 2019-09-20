@@ -3,6 +3,7 @@ using ServiceDesk.SmartUI.FormFieldsBuilder.OptionBuilders;
 using ServiceDesk.SmartUI.FormFieldsFactory;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace ServiceDesk.SmartUI.FormFieldsBuilder
 {
-    public class CheckboxBuilder : BuildFormField
+    public class CheckboxBuilder : FormFieldOptionBuilder
     {
         public CheckboxBuilder()
         {
@@ -18,30 +19,20 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
 
         public override FormField Build(PropertyInfo property)
         {
-            BuildValidation(property);
             if (!property.PropertyType.IsEnum)
                 throw new Exception("Checkbox has te be the enum type");
 
-            var options = new List<Option>();
-            var fieldsEnum = property.PropertyType.GetFields().Where(x => x.IsLiteral).ToList();
-            foreach (var field in fieldsEnum)
-            {
-                options.Add(new Option
-                {
-                    Label = field.Name,
-                    Value = Convert.ToInt64(field.GetRawConstantValue()),
-                });
-            }
-            
-
+            BuildValidation(property);
+            BuildFormFieldOptions(property);
+            BuildShowProperty(property);
 
             FormField formfield = new FormField
             {
-                NameField = property.Name,
-                Label = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name,
-                Validation = Validations,
+                NameField = char.ToLower(property.Name[0]) + property.Name.Substring(1),
+                ShowProperties = ShowProperties,
+                Validations = Validations,
                 Type = FieldType.Checkbox.ToString(),
-                Options = options
+                Options = Options
             };
 
             return formfield;
@@ -49,7 +40,7 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
 
 
         public override bool CheckFormFieldType(PropertyInfo input)
-            => input.GetCustomAttribute<Checkbox>() == null ? false : true;
+            => input.GetCustomAttribute<Checkbox>() != null;
 
     }
 }

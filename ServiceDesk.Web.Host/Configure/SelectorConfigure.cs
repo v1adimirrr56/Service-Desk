@@ -9,7 +9,7 @@ namespace ServiceDesk.Web.Host.Configure
 {
     public static class SelectorConfigure
     {
-        public static void InitializeSelector(this IServiceCollection sc)
+        public static void InitializeSelector(this IServiceCollection service)
         {
             var difindeTypes = AppDomain
                 .CurrentDomain
@@ -19,7 +19,7 @@ namespace ServiceDesk.Web.Host.Configure
                 .Where(x => !x.IsAbstract)
                 .ToList();
             foreach (var type in difindeTypes)
-                sc.AddScoped(type);
+                service.AddScoped(type);
         }
     }
 }

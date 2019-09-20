@@ -6,8 +6,7 @@ namespace ServiceDesk.SmartUI.FormFieldAttributes
 {
     public class Radio : FormFieldOptionAttribute
     {
-        public Radio(Type selector) : base(selector)
-        {
-        }
+        public Radio() : base() { }
+        public Radio(Type type) : base(type) { }
     }
 }

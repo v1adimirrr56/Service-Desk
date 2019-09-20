@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 export class FormContainerComponent implements OnInit {
   protected getSchema() {}
   protected getContext() {}
-  public schemaUrl() {
+  protected getData() {}
+  private schemaUrl() {
     return `${this.getContext()}/${this.getSchema()}`;
+  }
+
+  private dataUrl() {
+    return `${this.getData()}`;
   }
 
   constructor() { }

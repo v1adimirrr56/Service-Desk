@@ -7,8 +7,9 @@
   &__radio
     position: absolute
     opacity: 0
+    margin: 0
     &:not(checked)+label:after
-      border: 2px solid transparent
+      border: 1px solid transparent
       transform: scale(0)
     &:checked+label:after
       background-color: $base-dark-color
@@ -17,18 +18,19 @@
       border-color: $base-dark-color
   &__label
     position: relative
-    padding-left: 30px
+    padding-left: 27px
     user-select: none
     display: inline-block
     line-height: 19px
+    cursor: pointer
     &:before, &:after
       content: ''
       position: absolute
       left: 0
-      top: 0
+      top: 1px
       margin: 1px
       width: 12px
       height: 12px
       border-radius: 50%
-      border: 2px solid #5a5a5a
+      border: 1px solid #5a5a5a
       transition: .28s ease

@@ -2,8 +2,11 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } fro
 import { SchemaService } from '../../../services/schema.service';
 import { first } from 'rxjs/operators';
 import { FormField } from '../form-field/models/FormField';
-import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { FormGroupFields } from '../form-field/models/FormGroupFields';
+import { CrudService } from '../../../services/crud.service';
+import { forkJoin } from 'rxjs';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-form-builder',
@@ -13,27 +16,45 @@ import { FormGroupFields } from '../form-field/models/FormGroupFields';
 export class FormBuilderComponent implements OnInit {
   isLoaded = false;
   schema: FormField[];
+  schemaWithoutHidden: FormField[];
   group: FormGroup;
+  data: any;
 
   @Input() schemaUrl;
+  @Input() dataUrl;
   @Output() submitForm = new EventEmitter<any>();
 
   constructor(
     private schemaService: SchemaService,
-    private fb: FormBuilder) {
-  }
+    private crudService: CrudService,
+    private fb: FormBuilder) {}
 
   buildFormControl(formFields: FormField[]) {
     const group = this.fb.group({});
     formFields.forEach(x => {
-      group.addControl(x.nameField, this.fb.control('', []));
+      if (x.showProperties.hidden)
+        return;
+
+      group.addControl(
+        x.nameField,
+        new FormControl(
+          { disabled: x.showProperties.readOnly },
+          this.addValidators(x)
+        )
+      );
     });
     this.group = group;
   }
 
+  setSchemaWithoutHidden() {
+    this.schemaWithoutHidden = this.schema.filter(x => {
+      return !x.showProperties.hidden;
+    });
+  }
+
   private addValidators(formField: FormField): ValidatorFn[] {
     const validations = [];
-    if (formField.validations.required !== null && formField.validations.required !== undefined)
+    if (formField.validations.required !== undefined && formField.validations.required !== null)
       validations.push(Validators.required);
     if (formField.validations.max)
       validations.push(Validators.max(formField.validations.max));
@@ -47,13 +68,29 @@ export class FormBuilderComponent implements OnInit {
     return validations;
   }
 
+  loadData(data: any) {
+    this.data = data;
+  }
+
+  loadSchema(formFields: FormField[]) {
+    this.schema = formFields;
+    this.buildFormControl(this.schema);
+  }
+
   ngOnInit(): void {
-    this.schemaService.getSchema(this.schemaUrl)
-      .pipe(first())
-      .subscribe(x => {
-        this.schema = x;
-        this.buildFormControl(this.schema);
-        this.isLoaded = true;
+    forkJoin(
+      this.schemaService.getSchema(this.schemaUrl),
+      this.crudService.get(this.dataUrl, 1)
+    ).subscribe(x => {
+      this.loadSchema(x[0]);
+      this.loadData(x[1]);
+      this.setSchemaWithoutHidden();
+      const controlKeys = Object.keys(this.group.controls);
+      controlKeys.forEach(y => {
+        this.group.controls[y].setValue(this.data[y]);
       });
+
+      this.isLoaded = true;
+    });
   }
 }

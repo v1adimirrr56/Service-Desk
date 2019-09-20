@@ -1,13 +1,16 @@
 import { FieldType } from './FieldType';
 export class FormField {
-  label: string;
   nameField: string;
-  placeholder?: string;
-  hidden?: boolean;
-  readOnly?: boolean;
   options?: Option[];
   type?: FieldType;
   validations?: IValidation;
+  showProperties?: IShowProperty;
+}
+
+export class IShowProperty {
+  readOnly: boolean;
+  hidden: boolean;
+  label: string;
 }
 
 export interface IValidation {

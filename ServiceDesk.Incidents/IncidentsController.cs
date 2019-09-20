@@ -5,21 +5,26 @@ using ServiceDesk.Incidents.Models;
 using ServiceDesk.Infrastructure;
 using ServiceDesk.Context.Infrastructure;
 using System.Linq;
+using ServiceDesk.Infrastructure.ServiceHandler;
 
 namespace ServiceDesk.Incidents
 {
     public class IncidentsController : ServiceDeskBaseController
     {
-        private readonly IIncidentsQueryableProvider _incidentsQueryableProvider;
-        public IncidentsController(IIncidentsQueryableProvider incidentsQueryableProvider)
+        private readonly IServiceHandler<IncidentDto> _serviceHandler;
+        private IServiceQueryHandler<long, IncidentDto> _getIncidentService;
+        public IncidentsController(
+            IServiceQueryHandler<long, IncidentDto> getIncidentService,
+            IServiceHandler<IncidentDto> serviceHandler)
         {
-            _incidentsQueryableProvider = incidentsQueryableProvider;
+            _serviceHandler = serviceHandler;
+            _getIncidentService = getIncidentService;
         }
 
-        [HttpGet]
-        public IActionResult Get(IncidentDto incidentDto)
+        [HttpGet("{id}")]
+        public IActionResult Get(long id)
         {
-            return Ok(new long[1 , 2]);
+            return Ok(_getIncidentService.Handle(id));
         }
     }
 }

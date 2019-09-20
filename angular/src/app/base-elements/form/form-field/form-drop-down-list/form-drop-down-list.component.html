@@ -8,7 +8,7 @@
     (formFieldFocusChanged)="focusChangeEvent($event)"
   ></app-input>
   <div class="options" [ngClass]="{active: isShow, inactive: !isShow}">
-    <a class="options__item" *ngFor="let option of formField.options; let i = index"
+    <a tabindex="0" class="options__item" *ngFor="let option of formField.options; let i = index"
        (click)="chooseOption(option.label)">
       {{option.label}}
     </a>

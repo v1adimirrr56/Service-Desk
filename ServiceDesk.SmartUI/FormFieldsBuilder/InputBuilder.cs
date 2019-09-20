@@ -2,6 +2,7 @@
 using ServiceDesk.SmartUI.FormFieldsFactory;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text;
@@ -13,11 +14,13 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
         public override FormField Build(PropertyInfo property)
         {
             BuildValidation(property);
+            BuildShowProperty(property);
+
             FormField formfield = new FormField
             {
-                NameField = property.Name,
-                Label = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name,
-                Validation = Validations,
+                NameField = char.ToLower(property.Name[0]) + property.Name.Substring(1),
+                ShowProperties = ShowProperties,
+                Validations = Validations,
                 Type = FieldType.Input.ToString()
             };
 
@@ -41,6 +44,6 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
         }
 
         public override bool CheckFormFieldType(PropertyInfo input)
-            => input.GetCustomAttribute<Input>() == null ? false : true;
+            => input.GetCustomAttribute<Input>() != null;
     }
 }

@@ -10,7 +10,6 @@ import { FormRadioComponent } from './form-field/form-radio/form-radio.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormFieldFocusDirective } from './form-field/form-input/form-field-focus.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormLabelFocusFilledDirective } from './form-field/form-input/form-label-focus-filled.directive';
 import { BaseElementsModule } from '../base-elements.module';
 import { SubmitButtonComponent } from './form-field/submit-button/submit-button.component';
 import { FormContainerComponent } from './form-container/form-container.component';
@@ -29,7 +28,6 @@ import { ShowDropDownListDirective } from './form-field/form-drop-down-list/show
     FormDatePickerComponent,
     FormRadioComponent,
     FormFieldFocusDirective,
-    FormLabelFocusFilledDirective,
     SubmitButtonComponent,
     FormContainerComponent,
     ShowDatePickerDirective,

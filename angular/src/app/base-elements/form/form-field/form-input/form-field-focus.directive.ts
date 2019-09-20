@@ -1,6 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { AnimationBuilder, AnimationFactory, AnimationPlayer } from '@angular/animations';
-import { formFieldInputfocusAnimation, formFieldInputfocusoutAnimation } from './animations/form-input-animation';
+import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
   selector: '[appFormFieldFocus]'

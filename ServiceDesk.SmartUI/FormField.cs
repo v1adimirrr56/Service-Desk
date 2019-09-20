@@ -7,11 +7,18 @@ namespace ServiceDesk.SmartUI
 {
     public class FormField
     {
-        public string Label { get; set; }
         public string NameField { get; set; }
         public IEnumerable<Option> Options { get; set; }
         public string Type { get; set; }
-        public Validation Validation { get; set; }
+        public Validation Validations { get; set; }
+        public ShowProperty ShowProperties { get; set; }
+    }
+
+    public class ShowProperty
+    {
+        public bool ReadOnly { get; set; }
+        public bool Hidden { get; set; }
+        public string Label { get; set; }
     }
 
     public class Validation

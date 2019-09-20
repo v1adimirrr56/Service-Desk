@@ -8,14 +8,6 @@ namespace ServiceDesk.Incidents.Entities
     public class Priority : IHasId
     {
         public long Id { get; set; }
-        public PriorityType PriorityType { get; set; }
-    }
-    public enum PriorityType
-    {
-        First,
-        Second,
-        Third,
-        Fourth,
-        Fiveth
+        public string PriorityType { get; set; }
     }
 }

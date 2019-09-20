@@ -7,8 +7,7 @@ namespace ServiceDesk.SmartUI.FormFieldAttributes
 {
     public class DropDownList : FormFieldOptionAttribute
     {
-        public DropDownList(Type selector) : base(selector)
-        {
-        }
+        public DropDownList(): base() { }
+        public DropDownList(Type type): base(type) { }
     }
 }

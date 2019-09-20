@@ -6,12 +6,7 @@ namespace ServiceDesk.SmartUI.FormFieldAttributes
 {
     public class Checkbox : FormFieldOptionAttribute
     {
-        public Checkbox()
-        {
-
-        }
-        public Checkbox(Type selector) : base(selector)
-        {
-        }
+        public Checkbox(): base() { }
+        public Checkbox(Type selector) : base(selector) { }
     }
 }

@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceDesk.Context.Infrastructure\ServiceDesk.Context.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

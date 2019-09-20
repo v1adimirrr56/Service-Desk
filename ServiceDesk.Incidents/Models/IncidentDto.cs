@@ -14,37 +14,38 @@ namespace ServiceDesk.Incidents.Models
     {
         public long Id { get; set; }
         public string Title { get; set; }
+        public string StatusName { get; set; }
+        public string PhaseName { get; set; }
+        [DropDownList(typeof(StateSelector))]
+        public string StateName { get; set; }
+        public long StateId { get; set; }
+        [DropDownList(typeof(CitySelector))]
+        public string CityName { get; set; }
+        public long CityId { get; set; }
+        [DropDownList(typeof(ImpactSelector))]
+        public string ImpactName { get; set; }
+        public long ImpactId { get; set; }
+        [DropDownList(typeof(ManagerSelector))]
+        public string ManagerFirstName { get; set; }
+        public long ManagerId { get; set; }
+        [DropDownList(typeof(PrioritySelector))]
+        public string PriorityPriorityType { get; set; }
+        public long PriorityId { get; set; }
         [DatePicker]
-        public DateTime CreateDate { get; set; }
-        [DropDownList(typeof(BranchSelector))]
-        [Required, MaxLength(5), MinLength(1)]
-        public Branch Branch { get; set; }
+        [DisplayName("Plan date resolve")]
+        public DateTime PlanDateResolve { get; set; }
         [Required, Range(0, 5)]
-        public int Count { get; set; }
+        public double Rate { get; set; }
         [Checkbox]
+        [DisplayName("Notification type")]
         public NotificationType NotificationType { get; set; }
-        [Radio(typeof(BranchSelector))]
+        [Radio]
         public ShareType ShareType { get; set; }
+        [DisplayName("Contact email")]
         public string ContactEmail { get; set; }
-        public Priority Priority { get; set; }
+        [DisplayName("Contact phone")]
         public string ContactPhone { get; set; }
 
     }
-
-
-    [Flags]
-    public enum NotificationType
-    {
-        Email = 1,
-        Sms = 2,
-        InApp = 4
-    }
-
-    public enum ShareType
-    {
-        Internal,
-        External
-    }
-
 }
 

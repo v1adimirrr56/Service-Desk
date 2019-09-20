@@ -19,17 +19,94 @@ namespace ServiceDesk.Context.Incidents.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Branch", b =>
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.City", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("NameBranch");
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brabches");
+                    b.ToTable("City");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "New York"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "Los Angeles"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Chicago"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Name = "Houston"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Name = "Phoenix"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Name = "Philadelphia"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Name = "Jacksonville"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Name = "Columbus"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            Name = "Seattle"
+                        });
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Impact", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Impact");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Single"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "Group"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Mass"
+                        });
                 });
 
             modelBuilder.Entity("ServiceDesk.Incidents.Entities.Incident", b =>
@@ -38,25 +115,119 @@ namespace ServiceDesk.Context.Incidents.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("BranchId");
+                    b.Property<long>("CityId");
 
                     b.Property<string>("ContactEmail");
 
                     b.Property<string>("ContactPhone");
 
-                    b.Property<int>("Count");
-
                     b.Property<DateTime>("CreateDate");
 
+                    b.Property<string>("CreatorName");
+
+                    b.Property<long>("ImpactId");
+
+                    b.Property<long>("ManagerId");
+
+                    b.Property<int>("NotificationType");
+
+                    b.Property<long>("PhaseId");
+
+                    b.Property<DateTime>("PlanDateResolve");
+
+                    b.Property<long>("PriorityId");
+
+                    b.Property<double>("Rate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(1.0);
+
                     b.Property<int>("ShareType");
+
+                    b.Property<long>("StateId");
+
+                    b.Property<long>("StatusId");
 
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BranchId");
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("ImpactId");
+
+                    b.HasIndex("ManagerId");
+
+                    b.HasIndex("PhaseId");
+
+                    b.HasIndex("PriorityId");
+
+                    b.HasIndex("StateId");
+
+                    b.HasIndex("StatusId");
 
                     b.ToTable("Incidents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CityId = 1L,
+                            ContactEmail = "ching.hso-lin89@example.com",
+                            ContactPhone = "+1(137)-691-2995",
+                            CreateDate = new DateTime(2019, 9, 19, 15, 11, 29, 139, DateTimeKind.Local).AddTicks(422),
+                            CreatorName = "Ching Hso-lin",
+                            ImpactId = 1L,
+                            ManagerId = 1L,
+                            NotificationType = 1,
+                            PhaseId = 1L,
+                            PlanDateResolve = new DateTime(2019, 9, 29, 15, 11, 29, 139, DateTimeKind.Local).AddTicks(8648),
+                            PriorityId = 1L,
+                            Rate = 5.0,
+                            ShareType = 0,
+                            StateId = 1L,
+                            StatusId = 1L,
+                            Title = "The Evitable Conflict: The Eastern Region"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CityId = 2L,
+                            ContactEmail = "ngoma42@example.com",
+                            ContactPhone = "+1(137)-691-2995",
+                            CreateDate = new DateTime(2019, 9, 19, 15, 11, 29, 140, DateTimeKind.Local).AddTicks(1043),
+                            CreatorName = "Ngoma",
+                            ImpactId = 2L,
+                            ManagerId = 2L,
+                            NotificationType = 3,
+                            PhaseId = 2L,
+                            PlanDateResolve = new DateTime(2019, 10, 5, 15, 11, 29, 140, DateTimeKind.Local).AddTicks(1066),
+                            PriorityId = 2L,
+                            Rate = 7.0,
+                            ShareType = 1,
+                            StateId = 2L,
+                            StatusId = 2L,
+                            Title = "The Evitable Conflict: The Tropic Region"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CityId = 3L,
+                            ContactEmail = "szegeczowska90@example.com",
+                            ContactPhone = "+1(137)-691-2995",
+                            CreateDate = new DateTime(2019, 9, 19, 15, 11, 29, 140, DateTimeKind.Local).AddTicks(1213),
+                            CreatorName = "Szegeczowska",
+                            ImpactId = 3L,
+                            ManagerId = 3L,
+                            NotificationType = 1,
+                            PhaseId = 3L,
+                            PlanDateResolve = new DateTime(2019, 9, 21, 15, 11, 29, 140, DateTimeKind.Local).AddTicks(1215),
+                            PriorityId = 3L,
+                            Rate = 2.0,
+                            ShareType = 0,
+                            StateId = 3L,
+                            StatusId = 3L,
+                            Title = "The Evitable Conflict: The European Region"
+                        });
                 });
 
             modelBuilder.Entity("ServiceDesk.Incidents.Entities.Job", b =>
@@ -82,13 +253,80 @@ namespace ServiceDesk.Context.Incidents.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Managers");
+                    b.ToTable("Manager");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Email = "linda.armstrong76@example.com",
+                            FirstName = "Linda",
+                            LastName = "Armstrong"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Email = "dylan.cole27@example.com",
+                            FirstName = "Dylan",
+                            LastName = "Cole"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Email = "travis.murphy20@example.com",
+                            FirstName = "Travis",
+                            LastName = "Murphy"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Email = "barry.frazier29@example.com",
+                            FirstName = "Barry",
+                            LastName = "Frazier"
+                        });
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Phase", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Phase");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Registration"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "In working"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Resolving"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Name = "Closed"
+                        });
                 });
 
             modelBuilder.Entity("ServiceDesk.Incidents.Entities.Priority", b =>
@@ -97,24 +335,182 @@ namespace ServiceDesk.Context.Incidents.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("PriorityType");
+                    b.Property<string>("PriorityType");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Priorities");
+                    b.ToTable("Priority");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            PriorityType = "None"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            PriorityType = "Normal"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            PriorityType = "Major"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            PriorityType = "Critical"
+                        });
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.State", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("State");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "New York"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "California"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Illinois"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Name = "Texas"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Name = "Arizona"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Name = "Pennsylvania"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Name = "Florida"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Name = "Ohio"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            Name = "Washington"
+                        });
+                });
+
+            modelBuilder.Entity("ServiceDesk.Incidents.Entities.Status", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Status");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Open"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "In work"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Pass vendor"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Name = "Hold"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Name = "Resolve"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Name = "Closed"
+                        });
                 });
 
             modelBuilder.Entity("ServiceDesk.Incidents.Entities.Incident", b =>
                 {
-                    b.HasOne("ServiceDesk.Incidents.Entities.Branch", "Branch")
+                    b.HasOne("ServiceDesk.Incidents.Entities.City", "City")
                         .WithMany()
-                        .HasForeignKey("BranchId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ServiceDesk.Incidents.Entities.Impact", "Impact")
+                        .WithMany()
+                        .HasForeignKey("ImpactId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ServiceDesk.Incidents.Entities.Manager", "Manager")
+                        .WithMany()
+                        .HasForeignKey("ManagerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ServiceDesk.Incidents.Entities.Phase", "Phase")
+                        .WithMany()
+                        .HasForeignKey("PhaseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ServiceDesk.Incidents.Entities.Priority", "Priority")
+                        .WithMany()
+                        .HasForeignKey("PriorityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ServiceDesk.Incidents.Entities.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ServiceDesk.Incidents.Entities.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ServiceDesk.Incidents.Entities.Job", b =>
                 {
                     b.HasOne("ServiceDesk.Incidents.Entities.Incident", "Incident")
-                        .WithMany("Incidents")
+                        .WithMany("Jobs")
                         .HasForeignKey("IncidentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

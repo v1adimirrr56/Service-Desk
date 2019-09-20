@@ -8,7 +8,7 @@ namespace ServiceDesk.Web.Host.Configure
 {
     public static class AutomapperConfigure
     {
-        public static void InitializeAutomapper(this IServiceCollection sc)
+        public static void InitializeAutomapper(this IServiceCollection service)
         {
             var assemblies = AppDomain
                 .CurrentDomain
@@ -16,7 +16,7 @@ namespace ServiceDesk.Web.Host.Configure
                 .Where(x => x.FullName.Contains("ServiceDesk"))
                 .ToList();
 
-            sc.AddAutoMapper(assemblies);
+            service.AddAutoMapper(assemblies);
         }
     }
 }
