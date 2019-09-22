@@ -1,13 +1,21 @@
-<div *ngFor="let option of formField.options; let i = index" class="form__field"
+<div class="form__field"
      [formGroup]="group">
-  <input class="form__field__radio"
-         id="{{option.label + i}}"
-         [attr.name]="formField.nameField"
-         [formControlName]="formField.nameField"
-         [value]="option.value"
-         type="radio"/>
-  <label class="form__field__label"
-         for="{{option.label + i}}"
-  >{{ option.label }}</label>
+  <div class="form__field__header">
+    {{formField.showProperties.label}}
+  </div>
+  <div class="form__field__items">
+    <div *ngFor="let option of formField.options; let i = index" class="form__field__item">
+      <input class="form__field__radio"
+             id="{{option.label + i}}radio"
+             [attr.name]="formControlName"
+             [formControlName]="formControlName"
+             [value]="option.value"
+             type="radio"/>
+      <label class="form__field__label"
+             for="{{option.label + i}}radio"
+      >{{ option.label }}</label>
+    </div>
+  </div>
+  <app-form-error [appFormControl]="formControl"></app-form-error>
 </div>
 

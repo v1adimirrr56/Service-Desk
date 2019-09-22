@@ -12,7 +12,6 @@ namespace ServiceDesk.Incidents.Entities
     {
         public long Id { get; set; }
         public string Title { get; set; }
-        public DateTime CreateDate { get; set; }
         public virtual State State { get; set; }
         public long StateId { get; set; }
         public virtual Phase Phase { get; set; }
@@ -24,8 +23,9 @@ namespace ServiceDesk.Incidents.Entities
         public virtual Manager Manager { get; set; }
         public long ManagerId { get; set; }
         public DateTime PlanDateResolve { get; set; }
+        public DateTime PassVendorDate { get; set; }
+        public DateTime CreateDate { get; set; }
         public ShareType ShareType { get; set; }
-        public NotificationType NotificationType { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
         public string ContactEmail { get; set; }
         public virtual Priority Priority { get; set; }
@@ -35,8 +35,9 @@ namespace ServiceDesk.Incidents.Entities
         public string ContactPhone { get; set; }
         public string CreatorName { get; set; }
         public double Rate { get; set; }
+        public bool UseNotification { get; set; }
+        public bool IsComposite { get; set; }
     }
-
     [Flags]
     public enum NotificationType
     {

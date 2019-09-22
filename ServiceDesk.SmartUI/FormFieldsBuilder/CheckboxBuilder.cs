@@ -19,20 +19,15 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
 
         public override FormField Build(PropertyInfo property)
         {
-            if (!property.PropertyType.IsEnum)
-                throw new Exception("Checkbox has te be the enum type");
-
             BuildValidation(property);
-            BuildFormFieldOptions(property);
             BuildShowProperty(property);
 
             FormField formfield = new FormField
             {
-                NameField = char.ToLower(property.Name[0]) + property.Name.Substring(1),
+                NameField = GenerateKey(property),
                 ShowProperties = ShowProperties,
                 Validations = Validations,
-                Type = FieldType.Checkbox.ToString(),
-                Options = Options
+                Type = FieldType.Checkbox.ToString()
             };
 
             return formfield;

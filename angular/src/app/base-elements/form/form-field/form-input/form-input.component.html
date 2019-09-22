@@ -1,8 +1,8 @@
 <div class="form__field"
      [formGroup]="group">
   <input class="form__field__input"
-         [formControlName]="formField.nameField"
-         [attr.id]="formField.nameField"
+         [formControlName]="formControlName"
+         [attr.id]="formControlName"
          [ngClass]="{ filled: getInputValue(),
                       forceFocus: forceFocus}"
          appFormFieldFocus
@@ -10,6 +10,9 @@
          (tabKey)="tabKeyEventHandler($event)"
          type="text"/>
   <label class="form__field__label"
-         [attr.for]="formField.nameField"
+         [attr.for]="formControlName"
   >{{ formField.showProperties.label }}</label>
+  <app-form-error
+    [appFormControl]="formControl"
+    [valueChanged]="getInputValue()"></app-form-error>
 </div>

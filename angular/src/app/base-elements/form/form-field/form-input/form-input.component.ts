@@ -16,6 +16,7 @@ export class FormInputComponent extends FormGroupField {
   @Input() forceFocus;
   @Output() formFieldFocusChanged = new EventEmitter();
   @Output() tabKeyEvent = new EventEmitter();
+
   getInputValue() {
     return this.group.get(this.formField.nameField).value;
   }

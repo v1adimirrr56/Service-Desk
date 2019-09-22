@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormContainerComponent } from '../../base-elements/form/form-container/form-container.component';
 
 @Component({
@@ -7,13 +7,15 @@ import { FormContainerComponent } from '../../base-elements/form/form-container/
   styleUrls: ['./create-incident.component.sass']
 })
 export class CreateIncidentComponent extends FormContainerComponent {
- getContext() {
-   return 'Incidents';
- }
- getSchema() {
-   return 'Incident';
- }
- getData() {
-   return 'Incidents';
- }
+  getContext() {
+    return 'Incidents';
+  }
+
+  getSchema() {
+    return 'Incident';
+  }
+
+  getData() {
+    return 'Incidents';
+  }
 }

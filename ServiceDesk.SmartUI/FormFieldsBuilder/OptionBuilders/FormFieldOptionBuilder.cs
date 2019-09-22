@@ -11,7 +11,7 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder.OptionBuilders
 {
     public abstract class FormFieldOptionBuilder: BuildFormField
     {
-        protected ICollection<Option> Options { get; private set; } = new List<Option>();
+        protected ICollection<Option> Options { get; private set; }
         public virtual void BuildFormFieldOptions(PropertyInfo property, IBuildOptions buildOptions = null)
         {
             if (property.PropertyType.IsEnum)

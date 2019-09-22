@@ -19,13 +19,14 @@ export interface IValidation {
   minLength: number;
   max: number;
   min: number;
+  regExp: string;
 }
 
 export class Option {
   label: string;
-  value: string;
+  value: number;
 
-  constructor(value: string, label: string) {
+  constructor(value: number, label: string) {
     this.label = label;
     this.value = value;
   }

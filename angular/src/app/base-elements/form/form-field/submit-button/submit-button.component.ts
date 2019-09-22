@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-submit-button',
@@ -7,8 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SubmitButtonComponent implements OnInit {
   @Input() group;
-
+  @Output() submitFormEvent = new EventEmitter();
   ngOnInit() {
   }
 
+  submitForm() {
+    this.submitFormEvent.emit();
+  }
 }

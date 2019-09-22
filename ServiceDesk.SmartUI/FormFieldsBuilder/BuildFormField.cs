@@ -8,10 +8,11 @@ namespace ServiceDesk.SmartUI.FormFieldsFactory
 {
     public abstract class BuildFormField
     {
-        protected Validation Validations { get; private set; } = new Validation();
-        protected ShowProperty ShowProperties { get; private set; } = new ShowProperty();
+        protected Validation Validations { get; private set; }
+        protected ShowProperty ShowProperties { get; private set; }
         protected virtual void BuildValidation(PropertyInfo property)
         {
+            Validations = new Validation();
             Validations.Required = property.GetCustomAttribute<RequiredAttribute>() != null;
         }
         protected void BuildShowProperty(PropertyInfo property)
@@ -22,7 +23,10 @@ namespace ServiceDesk.SmartUI.FormFieldsFactory
             showProperties.ReadOnly = property.GetCustomAttribute<ReadOnlyAttribute>()?.IsReadOnly ?? false;
             ShowProperties = showProperties;
         }
-        public abstract bool CheckFormFieldType(PropertyInfo input);
-        public abstract FormField Build(PropertyInfo input);
+        protected string GenerateKey(PropertyInfo property)
+            => char.ToLower(property.Name[0]) + property.Name.Substring(1);
+
+        public abstract bool CheckFormFieldType(PropertyInfo property);
+        public abstract FormField Build(PropertyInfo property);
     }
 }

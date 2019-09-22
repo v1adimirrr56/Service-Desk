@@ -2,15 +2,9 @@ import {
   AfterViewChecked,
   AfterViewInit, ChangeDetectorRef,
   Directive,
-  DoCheck,
-  ElementRef, HostBinding,
-  HostListener,
-  Input,
-  OnChanges,
-  OnInit, QueryList,
+  ElementRef,
+  Input, QueryList,
   Renderer2,
-  SimpleChange,
-  SimpleChanges, TemplateRef, ViewChildren
 } from '@angular/core';
 
 @Directive({
@@ -46,6 +40,7 @@ export class CellActiveDirective implements AfterViewInit, AfterViewChecked {
 
   @Input() allCells: QueryList<ElementRef>;
   @Input() initialDate;
+
   ngAfterViewInit() {
     this.cd.detectChanges();
   }

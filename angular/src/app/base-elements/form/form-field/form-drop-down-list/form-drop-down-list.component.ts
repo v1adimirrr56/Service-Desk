@@ -1,7 +1,7 @@
 import {
   Component,
   ElementRef,
-  HostListener,
+  HostListener, OnInit,
   Renderer2,
   ViewChild
 } from '@angular/core';
@@ -12,9 +12,8 @@ import { FormInputComponent } from '../form-input/form-input.component';
   templateUrl: './form-drop-down-list.component.html',
   styleUrls: ['./form-drop-down-list.component.sass']
 })
-export class FormDropDownListComponent extends FormInputComponent {
+export class FormDropDownListComponent extends FormInputComponent implements OnInit {
   isShow;
-  inputValue;
   @ViewChild('input') input: FormInputComponent;
 
   @HostListener('document:click', ['$event']) appShowDropDownList(event) {
@@ -27,10 +26,12 @@ export class FormDropDownListComponent extends FormInputComponent {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
     super();
   }
+  ngOnInit(): void {
+    super.ngOnInit();
+  }
 
   chooseOption(label: string) {
     this.group.get(this.formField.nameField).setValue(label);
-    this.inputValue = label;
     this.input.forceFocus = false;
     this.isShow = false;
   }

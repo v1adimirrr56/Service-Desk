@@ -9,29 +9,36 @@
   left: 0
   width: 0
   transition: 0.15s ease-in-out
-.form__field__item
-  position: relative
-  user-select: none
-.form__field__checkbox
-  opacity: 0
-  position: absolute
-  margin: 0
-  &:checked+label:before
-    background-color: $base-color
-    border: 1px solid $base-color
-  &:checked+label /deep/ .form__field__done svg
-    fill: #fff
-    width: 10px
-.form__field__label
-  padding-left: 27px
-  cursor: pointer
-  &:before
-    content: ''
+.form__field
+  display: inline-flex
+  flex-flow: column
+  margin: 1rem 0 1.5rem 0
+  &__items
+    display: flex
+  &__item
+    position: relative
+    user-select: none
+  &__checkbox
+    opacity: 0
     position: absolute
-    left: 0px
-    top: 1px
-    padding: 2px
-    width: 8px
-    height: 8px
-    border: 1px solid #5a5a5a
-    transition: .28s ease
+    margin: 0
+    &:checked+label:before
+      background-color: $primary-color
+      border: 1px solid $primary-color
+    &:checked+label /deep/ .form__field__done svg
+      fill: #fff
+      width: 10px
+  &__label
+    padding-left: 27px
+    margin-right: 27px
+    cursor: pointer
+    &:before
+      content: ''
+      position: absolute
+      left: 0px
+      top: 1px
+      padding: 2px
+      width: 8px
+      height: 8px
+      border: 1px solid #5a5a5a
+      transition: .28s ease

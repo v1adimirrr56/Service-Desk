@@ -9,22 +9,31 @@ using ServiceDesk.Infrastructure.ServiceHandler;
 
 namespace ServiceDesk.Incidents
 {
-    public class IncidentsController : ServiceDeskBaseController
+    public class IncidentsController : IncidentsBaseServiceDeskController
     {
-        private readonly IServiceHandler<IncidentDto> _serviceHandler;
+        private readonly IServiceHandler<IncidentDto> _createIncident;
         private IServiceQueryHandler<long, IncidentDto> _getIncidentService;
         public IncidentsController(
             IServiceQueryHandler<long, IncidentDto> getIncidentService,
-            IServiceHandler<IncidentDto> serviceHandler)
+            IServiceHandler<IncidentDto> createIncident)
         {
-            _serviceHandler = serviceHandler;
+            _createIncident = createIncident;
             _getIncidentService = getIncidentService;
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(long id)
+        public IActionResult GetIncidentById(long id)
         {
             return Ok(_getIncidentService.Handle(id));
+        }
+
+        [HttpPost]
+        public IActionResult AddIncident([FromBody]IncidentDto incident)
+        {
+            _createIncident.Handle(incident);
+            ModelState.AddModelError("ss", "sdk");
+            return BadRequest(ModelState);
+            return Ok();
         }
     }
 }

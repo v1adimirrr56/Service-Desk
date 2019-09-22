@@ -38,7 +38,9 @@ namespace ServiceDesk.Web.Host
         public void ConfigureServices(IServiceCollection services)
         {
             // Initialize DI
-            services.AddMvc(options => {}).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => {
+                options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "*Required");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<ModuleAssembly>();
             services.AddHttpContextAccessor();
             services.AddScoped<SchemaHandler>();

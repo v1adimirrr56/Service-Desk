@@ -2,6 +2,7 @@
 using ServiceDesk.Incidents.Entities;
 using ServiceDesk.Incidents.Models;
 using ServiceDesk.Infrastructure.ActionHandler;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServiceDesk.Incidents.Actions
 {
@@ -15,6 +16,8 @@ namespace ServiceDesk.Incidents.Actions
         }
         public Incident Action(IncidentDto input)
         {
+            AddError("Fatal error", new[] { nameof(input.CityName) });
+            AddError("Fatal error2", new[] { nameof(input.ImpactName) });
             return new Incident();
         }
     }

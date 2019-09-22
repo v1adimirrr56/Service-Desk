@@ -9,7 +9,11 @@ import { FormGroupField } from '../models/FormGroupFields';
   styleUrls: ['./form-radio.component.sass']
 })
 export class FormRadioComponent extends FormGroupField implements OnInit {
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
+    super.ngOnInit();
   }
 }

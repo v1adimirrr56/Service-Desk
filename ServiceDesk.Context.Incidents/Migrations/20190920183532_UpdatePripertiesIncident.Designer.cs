@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ServiceDesk.Context.Incidents;
 
 namespace ServiceDesk.Context.Incidents.Migrations
 {
     [DbContext(typeof(IncidentsContext))]
-    partial class IncidentsContextModelSnapshot : ModelSnapshot
+    [Migration("20190920183532_UpdatePripertiesIncident")]
+    partial class UpdatePripertiesIncident
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

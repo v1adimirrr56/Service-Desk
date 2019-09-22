@@ -32,10 +32,12 @@ export class DynamicFormFieldDirective implements OnInit {
 
   ngOnInit(): void {
     const component = mappingFromFormTypeToFormComponent[this.formField.type];
-    const factory = this.resolver.resolveComponentFactory<any>(component);
-    this.component = this.container.createComponent(factory);
-    this.component.instance.formField = this.formField;
-    this.component.instance.group = this.group;
+    if (!this.formField.showProperties.hidden) {
+      const factory = this.resolver.resolveComponentFactory<any>(component);
+      this.component = this.container.createComponent(factory);
+      this.component.instance.formField = this.formField;
+      this.component.instance.group = this.group;
+    }
   }
 
 }

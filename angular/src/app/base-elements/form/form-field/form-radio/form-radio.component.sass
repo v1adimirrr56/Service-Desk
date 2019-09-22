@@ -3,7 +3,13 @@
 .form__field
   position: relative
   display: block
-  margin: 0 0 0.5rem 0
+  margin: 0 0 1.5rem 0
+  &__header
+    margin-bottom: 10px
+  &__item
+    margin-bottom: 7px
+  &__item:last-child
+    margin-bottom: 0
   &__radio
     position: absolute
     opacity: 0
@@ -12,10 +18,10 @@
       border: 1px solid transparent
       transform: scale(0)
     &:checked+label:after
-      background-color: $base-dark-color
+      background-color: $primary-dark-color
       transform: scale(0.5)
     &:checked+label:before
-      border-color: $base-dark-color
+      border-color: $primary-dark-color
   &__label
     position: relative
     padding-left: 27px

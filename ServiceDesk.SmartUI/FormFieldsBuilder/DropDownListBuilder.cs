@@ -26,7 +26,7 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
 
             FormField formfield = new FormField
             {
-                NameField = char.ToLower(property.Name[0]) + property.Name.Substring(1),
+                NameField = GenerateKey(property),
                 ShowProperties = ShowProperties,
                 Validations = Validations,
                 Type = FieldType.DropDownList.ToString(),

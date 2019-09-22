@@ -18,7 +18,7 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
 
             FormField formfield = new FormField
             {
-                NameField = char.ToLower(property.Name[0]) + property.Name.Substring(1),
+                NameField = GenerateKey(property),
                 ShowProperties = ShowProperties,
                 Validations = Validations,
                 Type = FieldType.Input.ToString()
@@ -30,7 +30,7 @@ namespace ServiceDesk.SmartUI.FormFieldsBuilder
         protected override void BuildValidation(PropertyInfo property)
         {
             base.BuildValidation(property);
-            if (property.PropertyType.GetType().IsNumberType())
+            if (property.PropertyType.IsNumberType())
             {
                 Validations.Max = (int?)property.GetCustomAttribute<RangeAttribute>()?.Maximum;
                 Validations.Min = (int?)property.GetCustomAttribute<RangeAttribute>()?.Minimum;

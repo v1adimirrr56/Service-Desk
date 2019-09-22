@@ -1,4 +1,14 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import { MONTHS } from './Months';
 
 @Component({
@@ -19,10 +29,12 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   initialDate = new Date();
   @ViewChildren('cellDay') cellsDay: QueryList<ElementRef>;
   countDaysForNextMonth = 0;
+  @Output() chosenDateChanged = new EventEmitter<Date>()
 
   constructor(private cd: ChangeDetectorRef) {
 
   }
+
   ngOnInit(): void {
     this.calendarMatrix = this.getMatrixDays();
   }
@@ -52,8 +64,9 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   checkDisable(row, column) {
     const cell = row * 7 + column;
     if (cell < this.currentFirstDayOfWeek()
-        || cell > 42 - this.countDaysForNextMonth)
+      || cell > 42 - this.countDaysForNextMonth) {
       return true;
+    }
 
     return false;
   }
@@ -71,6 +84,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   selectDay(cellDay, day) {
     this.selectedCell = cellDay;
     this.chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
+    this.chosenDateChanged.emit(this.chosenDate);
   }
 
   clickMonth() {
@@ -94,9 +108,6 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
   }
 
   getMatrixDays() {
-    console.log(this.currentFirstDayOfWeek())
-    console.log(this.currentLastDayOfWeek())
-
     const previousMonthLastDay = this
       .getDaysInMonth(this.currentDate.getMonth() - 1);
     const currentFirstDayOfWeek = this.currentFirstDayOfWeek();
@@ -110,8 +121,7 @@ export class DatePickerComponent implements OnInit, AfterViewInit {
     }
 
     let startDayNextMonth = 1;
-    while (allDaysForCurrentMonth.length < 42)
-    {
+    while (allDaysForCurrentMonth.length < 42) {
       allDaysForCurrentMonth.push(startDayNextMonth);
       startDayNextMonth++;
     }

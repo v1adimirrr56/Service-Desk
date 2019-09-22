@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilderComponent } from './form-builder/form-builder.component';
+import { DynamicFormComponent } from './form-builder/dynamic-form.component';
 import { FormInputComponent } from './form-field/form-input/form-input.component';
 import { DynamicFormFieldDirective } from './form-field/dynamic-form-field.directive';
 import { FormCheckboxComponent } from './form-field/form-checkbox/form-checkbox.component';
@@ -12,15 +12,17 @@ import { FormFieldFocusDirective } from './form-field/form-input/form-field-focu
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseElementsModule } from '../base-elements.module';
 import { SubmitButtonComponent } from './form-field/submit-button/submit-button.component';
-import { FormContainerComponent } from './form-container/form-container.component';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
 import { ShowDatePickerDirective } from './form-field/form-date-picker/show-date-picker.directive';
 import { OutsideDirective } from './form-field/form-date-picker/outside.directive';
 import { ShowDropDownListDirective } from './form-field/form-drop-down-list/show-drop-down-list.directive';
+import { FormErrorComponent } from './form-field/form-error/form-error.component';
+import { HasScrollDirective } from './form-field/form-drop-down-list/has-scroll.directive';
+import { ShowErrorDirective } from './form-field/form-error/show-error.directive';
 
 @NgModule({
   declarations: [
-    FormBuilderComponent,
+    DynamicFormComponent,
     FormInputComponent,
     DynamicFormFieldDirective,
     FormCheckboxComponent,
@@ -29,14 +31,15 @@ import { ShowDropDownListDirective } from './form-field/form-drop-down-list/show
     FormRadioComponent,
     FormFieldFocusDirective,
     SubmitButtonComponent,
-    FormContainerComponent,
     ShowDatePickerDirective,
     OutsideDirective,
-    ShowDropDownListDirective
+    ShowDropDownListDirective,
+    FormErrorComponent,
+    HasScrollDirective,
+    ShowErrorDirective
   ],
   exports: [
-    FormBuilderComponent,
-    FormContainerComponent
+    DynamicFormComponent,
   ],
   entryComponents: [
     FormInputComponent,

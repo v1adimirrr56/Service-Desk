@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroupField } from '../models/FormGroupFields';
-import { Option } from '../models/FormField';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-checkbox',
@@ -8,13 +8,12 @@ import { Option } from '../models/FormField';
   styleUrls: ['./form-checkbox.component.sass']
 })
 export class FormCheckboxComponent extends FormGroupField implements OnInit {
-
   constructor() {
     super();
   }
 
   ngOnInit(): void {
-    console.log(this.formField.options)
+    super.ngOnInit();
   }
 
 }
