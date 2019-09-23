@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceDesk.Incidents.Entities;
 using ServiceDesk.Incidents.Selector;
-using ServiceDesk.SmartUI;
-using ServiceDesk.SmartUI.FormFieldAttributes;
+using ServiceDesk.SmartUI.Forms;
+using ServiceDesk.SmartUI.Forms.FormFieldAttributes;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -12,28 +12,25 @@ namespace ServiceDesk.Incidents.Models
     [Form]
     public class IncidentDto
     {
+        [HiddenInput]
         public long Id { get; set; }
-        [Required, MinLength(5)]
+        [MinLength(5)]
         public string Title { get; set; }
         [DropDownList(typeof(StateSelector))]
         [DisplayName("State")]
-        public string StateName { get; set; }
         public long StateId { get; set; }
         [DropDownList(typeof(CitySelector))]
+        [Required]
         [DisplayName("City")]
-        public string CityName { get; set; }
         public long CityId { get; set; }
         [DropDownList(typeof(ImpactSelector))]
         [DisplayName("Impact")]
-        public string ImpactName { get; set; }
         public long ImpactId { get; set; }
         [DropDownList(typeof(ManagerSelector))]
         [DisplayName("Manager")]
-        public string Manager { get; set; }
         public long ManagerId { get; set; }
         [DropDownList(typeof(PrioritySelector))]
         [DisplayName("Priority")]
-        public string PriorityPriorityType { get; set; }
         public long PriorityId { get; set; }
         [DatePicker]
         [DisplayName("Plan date resolve")]

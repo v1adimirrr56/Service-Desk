@@ -6,6 +6,7 @@ using ServiceDesk.Infrastructure;
 using ServiceDesk.Context.Infrastructure;
 using System.Linq;
 using ServiceDesk.Infrastructure.ServiceHandler;
+using ServiceDesk.Infrastructure.Validations;
 
 namespace ServiceDesk.Incidents
 {
@@ -31,8 +32,8 @@ namespace ServiceDesk.Incidents
         public IActionResult AddIncident([FromBody]IncidentDto incident)
         {
             _createIncident.Handle(incident);
-            ModelState.AddModelError("ss", "sdk");
-            return BadRequest(ModelState);
+            if (_createIncident.HasError)
+                return BadRequest(new ValidationResultModel(_createIncident.Errors));
             return Ok();
         }
     }

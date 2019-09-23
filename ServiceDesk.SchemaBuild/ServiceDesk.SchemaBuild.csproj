@@ -12,7 +12,7 @@
     <ProjectReference Include="..\ServiceDesk.Context.Infrastructure\ServiceDesk.Context.Infrastructure.csproj" />
     <ProjectReference Include="..\ServiceDesk.Incidents\ServiceDesk.Incidents.csproj" />
     <ProjectReference Include="..\ServiceDesk.Infrastructure\ServiceDesk.Infrastructure.csproj" />
-    <ProjectReference Include="..\ServiceDesk.SmartUI\ServiceDesk.SmartUI.csproj" />
+    <ProjectReference Include="..\ServiceDesk.SmartUI.Forms\ServiceDesk.SmartUI.Forms.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@ export class CreateIncidentComponent extends FormContainerComponent {
   }
 
   getSchema() {
-    return 'Incident';
+    return 'IncidentDto';
   }
 
   getData() {

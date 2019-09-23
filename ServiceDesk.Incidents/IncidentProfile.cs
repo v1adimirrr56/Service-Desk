@@ -8,8 +8,7 @@ namespace ServiceDesk.Incidents
     {
         public IncidentProfile()
         {
-            CreateMap<Incident, IncidentDto>()
-                .ForMember(x => x.Manager, x => x.MapFrom(y => y.Manager.FirstName + " " + y.Manager.LastName));
+            CreateMap<Incident, IncidentDto>();
         }
     }
 }

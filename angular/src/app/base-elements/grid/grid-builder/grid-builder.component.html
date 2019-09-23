@@ -1,0 +1,23 @@
+<table class="grid">
+  <thead class="grid__header">
+  <tr class="grid__header__row">
+    <th *ngFor="let column of schema.columns"
+      class="grid__header__row__cell">{{column.label}}</th>
+  </tr>
+  </thead>
+  <tbody class="grid__body">
+  <tr class="grid__body__filter__row">
+    <th
+        class="grid__body__filter__row__cell">
+      <input type="text"
+             [(ngModel)]="inputValue"
+             (ngModelChange)="changeInputValue($event)" />
+    </th>
+  </tr>
+  <tr *ngFor="let row of data"
+    class="grid__body__row">
+    <td *ngFor="let key of keys"
+      class="grid__header__row__cell">{{row[key]}}</td>
+  </tr>
+  </tbody>
+</table>

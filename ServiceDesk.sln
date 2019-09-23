@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Infrastructure"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.Context.Infrastructure", "ServiceDesk.Context.Infrastructure\ServiceDesk.Context.Infrastructure.csproj", "{DD79F0EF-87BB-46BB-AE81-9197FB1B5C29}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.SmartUI", "ServiceDesk.SmartUI\ServiceDesk.SmartUI.csproj", "{B8DE03F0-C31E-4422-BEED-69A064684E42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.SmartUI.Forms", "ServiceDesk.SmartUI.Forms\ServiceDesk.SmartUI.Forms.csproj", "{B8DE03F0-C31E-4422-BEED-69A064684E42}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDesk.SchemaBuild", "ServiceDesk.SchemaBuild\ServiceDesk.SchemaBuild.csproj", "{ED30241D-58EE-4F80-B509-5CFC1ABA7C1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDesk.SmartUI.Grids", "ServiceDesk.SmartUI.Grids\ServiceDesk.SmartUI.Grids.csproj", "{4C133870-FEA9-4385-89F4-F8F199516F20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{ED30241D-58EE-4F80-B509-5CFC1ABA7C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED30241D-58EE-4F80-B509-5CFC1ABA7C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED30241D-58EE-4F80-B509-5CFC1ABA7C1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C133870-FEA9-4385-89F4-F8F199516F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C133870-FEA9-4385-89F4-F8F199516F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C133870-FEA9-4385-89F4-F8F199516F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C133870-FEA9-4385-89F4-F8F199516F20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{DD79F0EF-87BB-46BB-AE81-9197FB1B5C29} = {FE28DDE8-EFCF-47F1-8403-948853EF311A}
 		{B8DE03F0-C31E-4422-BEED-69A064684E42} = {7E97823F-6EF6-45B8-88CA-F920D3A7649F}
 		{ED30241D-58EE-4F80-B509-5CFC1ABA7C1E} = {7E97823F-6EF6-45B8-88CA-F920D3A7649F}
+		{4C133870-FEA9-4385-89F4-F8F199516F20} = {7E97823F-6EF6-45B8-88CA-F920D3A7649F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {202B30CD-C779-4F5B-8F11-DA98E4039631}

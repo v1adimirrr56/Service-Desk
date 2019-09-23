@@ -9,13 +9,15 @@ import { TabComponent } from './tab/tab.component';
 import { FormModule } from './base-elements/form/form.module';
 import { BaseElementsModule } from './base-elements/base-elements.module';
 import { CreateIncidentComponent } from './incident/create-incident/create-incident.component';
+import { ViewIncidentGridComponent } from './incident/view-incident-grid/view-incident-grid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     TabComponent,
-    CreateIncidentComponent
+    CreateIncidentComponent,
+    ViewIncidentGridComponent
   ],
   imports: [
     BrowserModule,

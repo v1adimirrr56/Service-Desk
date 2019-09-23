@@ -1,0 +1,18 @@
+@import "../../../../assets/color-variables"
+$padding-cell: .8rem 1rem
+.grid
+  background-color: #ffffff
+  border: 1px solid #cccecf
+  border-spacing: 0
+  &__header
+    &__row
+      &__cell
+        padding: $padding-cell
+  &__body
+    &__row
+      &__cell
+        padding: $padding-cell
+        max-width: 6rem
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap

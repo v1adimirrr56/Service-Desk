@@ -1,9 +1,13 @@
 <div class="tab">
   <ul class="tab__header">
-    <li class="tab__header__item">Create incidents</li>
-    <li class="tab__header__item">Show incidents</li>
+    <li class="tab__header__item">
+      <a routerLink="/create-incident">Add incident</a>
+    </li>
+    <li class="tab__header__item">
+      <a routerLink="/view-incidents">Show incidents</a>
+      </li>
   </ul>
   <div class="tab__body">
-    <ng-content></ng-content>
+    <router-outlet></router-outlet>
   </div>
 </div>

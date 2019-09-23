@@ -4632,7 +4632,8 @@
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.2.0",
           "ServiceDesk.Context.Infrastructure": "1.0.0",
           "ServiceDesk.Infrastructure": "1.0.0",
-          "ServiceDesk.SmartUI": "1.0.0"
+          "ServiceDesk.SmartUI.Forms": "1.0.0",
+          "ServiceDesk.SmartUI.Grids": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ServiceDesk.Incidents.dll": {}
@@ -4664,7 +4665,7 @@
           "ServiceDesk.Context.Infrastructure": "1.0.0",
           "ServiceDesk.Incidents": "1.0.0",
           "ServiceDesk.Infrastructure": "1.0.0",
-          "ServiceDesk.SmartUI": "1.0.0"
+          "ServiceDesk.SmartUI.Forms": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ServiceDesk.SchemaBuild.dll": {}
@@ -4673,7 +4674,7 @@
           "bin/placeholder/ServiceDesk.SchemaBuild.dll": {}
         }
       },
-      "ServiceDesk.SmartUI/1.0.0": {
+      "ServiceDesk.SmartUI.Forms/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -4683,10 +4684,20 @@
           "ServiceDesk.Context.Infrastructure": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/ServiceDesk.SmartUI.dll": {}
+          "bin/placeholder/ServiceDesk.SmartUI.Forms.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ServiceDesk.SmartUI.dll": {}
+          "bin/placeholder/ServiceDesk.SmartUI.Forms.dll": {}
+        }
+      },
+      "ServiceDesk.SmartUI.Grids/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ServiceDesk.SmartUI.Grids.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceDesk.SmartUI.Grids.dll": {}
         }
       }
     }
@@ -12622,10 +12633,15 @@
       "path": "../ServiceDesk.SchemaBuild/ServiceDesk.SchemaBuild.csproj",
       "msbuildProject": "../ServiceDesk.SchemaBuild/ServiceDesk.SchemaBuild.csproj"
     },
-    "ServiceDesk.SmartUI/1.0.0": {
+    "ServiceDesk.SmartUI.Forms/1.0.0": {
       "type": "project",
-      "path": "../ServiceDesk.SmartUI/ServiceDesk.SmartUI.csproj",
-      "msbuildProject": "../ServiceDesk.SmartUI/ServiceDesk.SmartUI.csproj"
+      "path": "../ServiceDesk.SmartUI.Forms/ServiceDesk.SmartUI.Forms.csproj",
+      "msbuildProject": "../ServiceDesk.SmartUI.Forms/ServiceDesk.SmartUI.Forms.csproj"
+    },
+    "ServiceDesk.SmartUI.Grids/1.0.0": {
+      "type": "project",
+      "path": "../ServiceDesk.SmartUI.Grids/ServiceDesk.SmartUI.Grids.csproj",
+      "msbuildProject": "../ServiceDesk.SmartUI.Grids/ServiceDesk.SmartUI.Grids.csproj"
     }
   },
   "projectFileDependencyGroups": {

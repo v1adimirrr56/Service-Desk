@@ -17,7 +17,6 @@ export class ShowDropDownListDirective {
   @Output() tabKeyEvent = new EventEmitter<boolean>();
 
   @HostListener('keydown', ['$event']) appShowDropDownList(event) {
-    console.log(event.code === 'Tab')
     if (event)
       this.tabKeyEvent.emit(true);
   }

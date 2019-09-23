@@ -3,7 +3,7 @@ using ServiceDesk.Infrastructure;
 
 namespace ServiceDesk.Incidents
 {
-    [Route("api/[controller]/Incidents")]
+    [Route("api/Incidents/[controller]")]
     [ApiController]
     public class IncidentsBaseServiceDeskController: ServiceDeskBaseController
     {

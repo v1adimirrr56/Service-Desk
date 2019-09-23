@@ -3,7 +3,7 @@ using ServiceDesk.Context.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using ServiceDesk.SmartUI.FormFieldsBuilder.OptionBuilders;
+using ServiceDesk.SmartUI.Forms.FormFieldsBuilder.OptionBuilders;
 
 namespace ServiceDesk.Incidents.Selector
 {

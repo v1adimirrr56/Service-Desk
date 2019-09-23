@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +21,10 @@ using ServiceDesk.Incidents.Models;
 using ServiceDesk.Incidents.Service;
 using ServiceDesk.Infrastructure.ActionHandler;
 using ServiceDesk.Infrastructure.ServiceHandler;
+using ServiceDesk.Infrastructure.Validations;
 using ServiceDesk.SchemaBuild;
+using ServiceDesk.SchemaBuild.Builders;
+using ServiceDesk.SchemaBuild.Loaders;
 using ServiceDesk.Web.Host.Configure;
 
 namespace ServiceDesk.Web.Host
@@ -37,15 +41,21 @@ namespace ServiceDesk.Web.Host
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Initialize DI
             services.AddMvc(options => {
-                options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "*Required");
+
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            // Initialize DI
             services.AddSingleton<ModuleAssembly>();
             services.AddHttpContextAccessor();
-            services.AddScoped<SchemaHandler>();
+            services.AddScoped<SchemaFormsHandler>();
+            services.AddScoped<SchemaGridsHandler>();
             services.AddScoped<IFormFieldsBuilder, FormFieldsBuilder>();
+            services.AddScoped<IGridBuilder, GridBuilder>();
             services.AddScoped<IServiceHandler<IncidentDto>, CreateIncidentService>();
+            services.AddScoped<ContextLoader>();
+            services.AddScoped<ModelLoader>();
+            
 
             services.InitializeServiceHandlers();
             services.InitializeServiceQueryHandlers();

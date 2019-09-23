@@ -6,6 +6,8 @@ import { DatePickerMonthComponent } from './date-picker/date-picker-month/date-p
 import { DatePickerYearComponent } from './date-picker/date-picker-year/date-picker-year.component';
 import { DatePickerViewDirective } from './date-picker/date-picker-view.directive';
 import { AppSvgComponent } from './app-svg/app-svg.component';
+import { GridBuilderComponent } from './grid/grid-builder/grid-builder.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,14 +16,18 @@ import { AppSvgComponent } from './app-svg/app-svg.component';
     DatePickerMonthComponent,
     DatePickerYearComponent,
     DatePickerViewDirective,
-    AppSvgComponent
+    AppSvgComponent,
+    GridBuilderComponent
   ],
   exports: [
     DatePickerComponent,
-    AppSvgComponent
+    AppSvgComponent,
+    GridBuilderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class BaseElementsModule { }

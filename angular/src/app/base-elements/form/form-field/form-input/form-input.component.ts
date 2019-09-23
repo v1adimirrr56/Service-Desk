@@ -9,13 +9,13 @@ import { $e } from 'codelyzer/angular/styles/chars';
   templateUrl: './form-input.component.html',
   styleUrls: ['./form-input.component.sass']
 })
-export class FormInputComponent extends FormGroupField {
-  @Input() inputValue;
+export class FormInputComponent extends FormGroupField implements OnInit {
   @Input() group: FormGroup;
   @Input() formField: FormField;
   @Input() forceFocus;
   @Output() formFieldFocusChanged = new EventEmitter();
   @Output() tabKeyEvent = new EventEmitter();
+  @Output() inputValueChanged = new EventEmitter();
 
   getInputValue() {
     return this.group.get(this.formField.nameField).value;
@@ -27,5 +27,13 @@ export class FormInputComponent extends FormGroupField {
 
   tabKeyEventHandler($event: boolean) {
     this.tabKeyEvent.emit($event);
+  }
+
+  ngOnInit(): void {
+    super.ngOnInit();
+  }
+
+  changeEvent($event) {
+    this.inputValueChanged.emit(this.formControl.value)
   }
 }

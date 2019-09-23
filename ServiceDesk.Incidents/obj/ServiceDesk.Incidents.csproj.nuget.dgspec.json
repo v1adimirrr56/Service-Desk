@@ -96,8 +96,11 @@
               "C:\\new\\ServiceDesk\\ServiceDesk.Infrastructure\\ServiceDesk.Infrastructure.csproj": {
                 "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.Infrastructure\\ServiceDesk.Infrastructure.csproj"
               },
-              "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI\\ServiceDesk.SmartUI.csproj": {
-                "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI\\ServiceDesk.SmartUI.csproj"
+              "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Forms\\ServiceDesk.SmartUI.Forms.csproj": {
+                "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Forms\\ServiceDesk.SmartUI.Forms.csproj"
+              },
+              "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Grids\\ServiceDesk.SmartUI.Grids.csproj": {
+                "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Grids\\ServiceDesk.SmartUI.Grids.csproj"
               }
             }
           }
@@ -200,14 +203,14 @@
         }
       }
     },
-    "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI\\ServiceDesk.SmartUI.csproj": {
+    "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Forms\\ServiceDesk.SmartUI.Forms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI\\ServiceDesk.SmartUI.csproj",
-        "projectName": "ServiceDesk.SmartUI",
-        "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI\\ServiceDesk.SmartUI.csproj",
+        "projectUniqueName": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Forms\\ServiceDesk.SmartUI.Forms.csproj",
+        "projectName": "ServiceDesk.SmartUI.Forms",
+        "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Forms\\ServiceDesk.SmartUI.Forms.csproj",
         "packagesPath": "C:\\Users\\Александр\\.nuget\\packages\\",
-        "outputPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI\\obj\\",
+        "outputPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Forms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -255,6 +258,60 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Grids\\ServiceDesk.SmartUI.Grids.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Grids\\ServiceDesk.SmartUI.Grids.csproj",
+        "projectName": "ServiceDesk.SmartUI.Grids",
+        "projectPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Grids\\ServiceDesk.SmartUI.Grids.csproj",
+        "packagesPath": "C:\\Users\\Александр\\.nuget\\packages\\",
+        "outputPath": "C:\\new\\ServiceDesk\\ServiceDesk.SmartUI.Grids\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Александр\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

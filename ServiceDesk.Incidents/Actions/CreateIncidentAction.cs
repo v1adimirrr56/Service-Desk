@@ -16,8 +16,8 @@ namespace ServiceDesk.Incidents.Actions
         }
         public Incident Action(IncidentDto input)
         {
-            AddError("Fatal error", new[] { nameof(input.CityName) });
-            AddError("Fatal error2", new[] { nameof(input.ImpactName) });
+            AddError("Fatal error", new[] { nameof(input.CityId) });
+            AddError("Fatal error2", new[] { nameof(input.ImpactId) });
             return new Incident();
         }
     }

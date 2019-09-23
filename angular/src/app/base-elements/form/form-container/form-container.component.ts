@@ -5,41 +5,35 @@ import { SchemaService } from '../../../services/schema.service';
 import { CrudService } from '../../../services/crud.service';
 import { forkJoin } from 'rxjs';
 import { MarkAsTouched } from '../form-builder/form-extensions';
+import { SchemaBuilder } from '../../models/Schema-builder';
 
 @Component({
   selector: 'app-form-container',
   templateUrl: './form-container.component.html'
 })
-export abstract class FormContainerComponent implements OnInit {
+export abstract class FormContainerComponent extends SchemaBuilder implements OnInit {
   @Output() submitForm = new EventEmitter<any>();
   isLoaded = false;
   schema: FormField[];
   group: FormGroup;
   data: any;
 
-  protected abstract getSchema();
-
-  protected abstract getContext();
-
-  protected abstract getData();
-
   private getSchemaUrl() {
-    return `${this.getContext()}/${this.getSchema()}`;
+    return `${this.getContext()}/${this.getSchema()}/Forms`;
   }
-
   private getDataUrl() {
     return `${this.getContext()}/${this.getData()}`;
   }
-
   private getDataUpdateUrl() {
     return `${this.getContext()}/${this.getData()}`;
   }
 
 
   constructor(
-    private schemaService: SchemaService,
+    private schemaService: SchemaService<FormField[]>,
     private crudService: CrudService,
     private fb: FormBuilder) {
+    super();
   }
 
   ngOnInit(): void {
@@ -107,15 +101,34 @@ export abstract class FormContainerComponent implements OnInit {
   submit($event) {
     this.crudService.post(this.getDataUpdateUrl(), $event.value).subscribe(x => {
     }, response => {
-      if (Array.isArray(response.error)) {
-        const errors = response.error as IApiError[];
+      // validation only ValidationResultModel
+      if (Array.isArray(response.error.errors)) {
+        const errors = response.error.errors as IApiError[];
         errors.forEach(error => {
           error.memberNames.forEach(member => {
-            if (!this.group.controls[member].errors.fromApi)
-              this.group.controls[member].setErrors({ fromApi: error.errorMessage });
+            if (!this.group.controls[member].errors
+              || (this.group.controls[member].errors
+                && !this.group.controls[member].errors.fromApi)) {
+              if (this.group.controls[`${member}label`])
+                this.group.controls[`${member}label`].setErrors({fromApi: error.errorMessage});
+              else
+                this.group.controls[member].setErrors({fromApi: error.errorMessage});
+            }
           });
         });
         MarkAsTouched(this.group);
+      } else
+      // default asp.net core validation
+      if (response.error.errors) {
+        const errorDic = response.error.errors;
+        const errorKeys = Object.keys(errorDic);
+        errorKeys.forEach(errorKey => {
+          const errorKeyFirstLowercase = errorKey[0].toLowerCase() + errorKey.substring(1);
+          if (this.group.controls[`${errorKeyFirstLowercase}label`])
+            this.group.controls[`${errorKeyFirstLowercase}label`].setErrors({fromApi: errorDic[errorKey][0]});
+          else
+            this.group.controls[errorKeyFirstLowercase].setErrors({fromApi: errorDic[errorKey][0]});
+        });
       }
     });
   }
