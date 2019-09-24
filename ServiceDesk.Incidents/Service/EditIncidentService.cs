@@ -7,27 +7,26 @@ using ServiceDesk.Infrastructure.ServiceHandler;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
 
 namespace ServiceDesk.Incidents.Service
 {
-    public class CreateIncidentService : ICreateServiceHandler<IncidentDto>
+    public class EditIncidentService : IEditServiceHandler<IncidentDto>
     {
         public ICollection<ValidationResult> Errors => _runner.Errors;
-        public bool HasErrors => Errors.Any();
+        public bool HasErrors => _runner.HasErrors;
         private readonly Runner<IncidentDto, Incident> _runner;
-        public CreateIncidentService(
-            ICreateActionHandler<IncidentDto, Incident> createAction,
+
+        public EditIncidentService(
+            IEditActionHandler<IncidentDto, Incident> editAction,
             IIncidentsQueryableProvider incidentsQueryableProvider)
         {
-            _runner = new Runner<IncidentDto, Incident>(createAction, incidentsQueryableProvider);
+            _runner = new Runner<IncidentDto, Incident>(editAction, incidentsQueryableProvider);
         }
 
         public void Handle(IncidentDto input)
         {
             _runner.Run(input);
         }
-
     }
 }

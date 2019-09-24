@@ -12,18 +12,18 @@ namespace ServiceDesk.Incidents.Features.Services
 {
     public class GetAllIncidentListService: IServiceQueryHandler<FilterConfig, IEnumerable<IncidentList>>
     {
-        private readonly IIncidentsQueryableProvider _provider;
+        private readonly IIncidentsQueryableProvider _incidentsQueryableProvider;
         private readonly IMapper _mapper;
         public GetAllIncidentListService(
             IMapper mapper,
-            IIncidentsQueryableProvider provider)
+            IIncidentsQueryableProvider incidentsQueryableProvider)
         {
-            _provider = provider;
+            _incidentsQueryableProvider = incidentsQueryableProvider;
             _mapper = mapper;
         }
         public IEnumerable<IncidentList> Handle(FilterConfig filterConfigs)
         {
-            var query =_provider
+            var query = _incidentsQueryableProvider
                 .Context
                 .Set<Incident>();
 

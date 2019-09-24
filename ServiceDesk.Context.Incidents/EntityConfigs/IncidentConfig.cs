@@ -12,6 +12,8 @@ namespace ServiceDesk.Context.Incidents.EntityConfigs
         public void Configure(EntityTypeBuilder<Incident> builder)
         {
             builder.Property(x => x.Rate).HasDefaultValue(1);
+            builder.Property(x => x.IsComposite).HasDefaultValue(false);
+            builder.Property(x => x.UseNotification).HasDefaultValue(false);
             builder.Property(x => x.CreateDate).HasDefaultValueSql("getutcdate()");
 
             builder.HasData(
@@ -19,7 +21,6 @@ namespace ServiceDesk.Context.Incidents.EntityConfigs
                 {
                     Id = 1,
                     ContactEmail = "ching.hso-lin89@example.com",
-                    ContactPhone = "+1(137)-691-2995",
                     CreateDate = DateTime.UtcNow,
                     ImpactId = 1,
                     ManagerId = 1,
@@ -41,7 +42,6 @@ namespace ServiceDesk.Context.Incidents.EntityConfigs
                 {
                     Id = 2,
                     ContactEmail = "ngoma42@example.com",
-                    ContactPhone = "+1(137)-691-2995",
                     CreateDate = DateTime.UtcNow,
                     ImpactId = 2,
                     ManagerId = 2,
@@ -62,7 +62,6 @@ namespace ServiceDesk.Context.Incidents.EntityConfigs
                 {
                     Id = 3,
                     ContactEmail = "szegeczowska90@example.com",
-                    ContactPhone = "+1(137)-691-2995",
                     CreateDate = DateTime.UtcNow,
                     ImpactId = 3,
                     ManagerId = 3,
@@ -83,7 +82,6 @@ namespace ServiceDesk.Context.Incidents.EntityConfigs
                 {
                     Id = 4,
                     ContactEmail = "hiram-mackenzie9@example.com",
-                    ContactPhone = "+1(137)-691-2995",
                     CreateDate = DateTime.UtcNow,
                     ImpactId = 1,
                     ManagerId = 1,

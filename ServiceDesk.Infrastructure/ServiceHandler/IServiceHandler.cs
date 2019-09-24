@@ -9,7 +9,7 @@ namespace ServiceDesk.Infrastructure.ServiceHandler
     public interface IServiceHandler<in TIn>
     {
         ICollection<ValidationResult> Errors { get; }
-        bool HasError { get; }
+        bool HasErrors { get; }
         void Handle(TIn input);
     }
 }

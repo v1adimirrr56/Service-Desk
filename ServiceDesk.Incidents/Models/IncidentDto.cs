@@ -41,16 +41,16 @@ namespace ServiceDesk.Incidents.Models
         public DateTime PlanDateResolve { get; set; }
         [DatePicker]
         [DisplayName("Pass to the vendor")]
-        public DateTime PassVendorDate { get; set; }
+        public DateTime? PassVendorDate { get; set; }
         [Required, Range(1, 5)]
         [InputNumber]
         public double Rate { get; set; }
         [Checkbox]
         [DisplayName("Subscribe to notifications")]
-        public bool UseNotification { get; set; }
+        public bool? UseNotification { get; set; }
         [Checkbox]
         [DisplayName("Composite")]
-        public bool IsComposite { get; set; }
+        public bool? IsComposite { get; set; }
         [Radio]
         [Required]
         [DisplayName("Choose the share type")]
@@ -58,8 +58,6 @@ namespace ServiceDesk.Incidents.Models
         [DisplayName("Contact email")]
         [Required, RegularExpression(@"[^@]+@[^\.]+\..+")]
         public string ContactEmail { get; set; }
-        [DisplayName("Contact phone")]
-        public string ContactPhone { get; set; }
 
     }
 }

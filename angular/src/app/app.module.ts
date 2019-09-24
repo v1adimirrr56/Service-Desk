@@ -6,11 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './layout/layout.component';
 import { SchemaService } from './services/schema.service';
 import { TabComponent } from './tab/tab.component';
-import { FormModule } from './base-elements/form/form.module';
-import { BaseElementsModule } from './base-elements/base-elements.module';
 import { CreateIncidentComponent } from './incident/create-incident/create-incident.component';
 import { ViewIncidentGridComponent } from './incident/view-incident-grid/view-incident-grid.component';
 import { EditIncidentComponent } from './incident/edit-incident/edit-incident.component';
+import { FormModule } from './base-elements/form/form.module';
+import { GridModule } from './base-elements/grid/grid.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { EditIncidentComponent } from './incident/edit-incident/edit-incident.co
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BaseElementsModule,
-    FormModule
+    FormModule,
+    GridModule
   ],
   providers: [SchemaService],
   exports: [

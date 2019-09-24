@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/Incidents/Incidents/1", //"api/schema/Incidents/Incident",
+      "launchUrl": "api/Incidents/IncidentsList",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "ServiceDesk.Web.Host": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/Incidents",
+      "launchUrl": "api/Incidents/IncidentsList",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

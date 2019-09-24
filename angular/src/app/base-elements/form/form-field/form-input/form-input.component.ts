@@ -30,7 +30,6 @@ export class FormInputComponent extends FormGroupField implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.group.get(this.formField.nameField).value);
     super.ngOnInit();
   }
 

@@ -10,7 +10,7 @@ using System.Linq;
 namespace ServiceDesk.Incidents.Actions
 {
     public class CreateIncidentAction
-        : ActionError, IActionHandler<IncidentDto, Incident>
+        : ActionError, ICreateActionHandler<IncidentDto, Incident>
     {
         private readonly IIncidentsQueryableProvider _incidentsQueryableProvider;
         private readonly IMapper _mapper;
@@ -23,19 +23,6 @@ namespace ServiceDesk.Incidents.Actions
         }
         public Incident Action(IncidentDto input)
         {
-            if (input.PassVendorDate < DateTime.UtcNow)
-                AddError("Date needs to be more than current", new[] { nameof(input.PassVendorDate) });
-            if (input.PlanDateResolve < DateTime.UtcNow)
-                AddError("Date needs to be more than current", new[] { nameof(input.PlanDateResolve) });
-
-            var checkStateCity = _incidentsQueryableProvider
-                .Context
-                .Set<StateCityRelation>()
-                .Where(x => x.StateId == input.StateId && x.CityId == input.CityId)
-                .FirstOrDefault();
-            if (checkStateCity == null)
-                AddError("There is no city for current state", new[] { nameof(input.CityId), nameof(input.StateId) });
-            
             //is New York
             //is not critical
             if (input.StateId == 1

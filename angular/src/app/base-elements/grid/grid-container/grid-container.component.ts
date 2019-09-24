@@ -11,10 +11,10 @@ import { $e } from 'codelyzer/angular/styles/chars';
   templateUrl: './grid-container.component.html',
   styleUrls: ['./grid-container.component.sass']
 })
-export abstract class GridContainerComponent extends SchemaBuilder implements OnInit {
+export class GridContainerComponent extends SchemaBuilder implements OnInit {
   schema: Grid;
   data: any[];
-  private isLoaded: boolean;
+  isLoaded: boolean;
 
   private getSchemaUrl() {
     return `${this.getContext()}/${this.getSchema()}/Grids`;

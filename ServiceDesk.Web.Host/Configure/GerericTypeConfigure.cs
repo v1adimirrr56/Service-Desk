@@ -13,12 +13,16 @@ namespace ServiceDesk.Web.Host.Configure
     {
         public static void InitializeActionHandlers(this IServiceCollection service)
         {
-            service.RegisterGenericType(typeof(IActionHandler<,>));
+            service.RegisterGenericType(typeof(ICreateActionHandler<,>));
+            service.RegisterGenericType(typeof(IEditActionHandler<,>));
+            service.RegisterGenericType(typeof(IDeleteActionHandler<,>));
         }
 
         public static void InitializeServiceHandlers(this IServiceCollection service)
         {
-            service.RegisterGenericType(typeof(IServiceHandler<>));
+            service.RegisterGenericType(typeof(ICreateServiceHandler<>));
+            service.RegisterGenericType(typeof(IEditServiceHandler<>));
+            service.RegisterGenericType(typeof(IDeleteServiceHandler<>));
         }
 
         public static void InitializeServiceQueryHandlers(this IServiceCollection service)

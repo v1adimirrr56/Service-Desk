@@ -1,33 +1,31 @@
 ﻿using ServiceDesk.Context.Infrastructure;
 using ServiceDesk.Incidents.Entities;
-using ServiceDesk.Incidents.Models;
 using ServiceDesk.Infrastructure.ActionHandler;
 using ServiceDesk.Infrastructure.Runners;
 using ServiceDesk.Infrastructure.ServiceHandler;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
 
-namespace ServiceDesk.Incidents.Service
+namespace ServiceDesk.Incidents.Features.Services
 {
-    public class CreateIncidentService : ICreateServiceHandler<IncidentDto>
+    public class DeleteIncidentService : IDeleteServiceHandler<long>
     {
         public ICollection<ValidationResult> Errors => _runner.Errors;
-        public bool HasErrors => Errors.Any();
-        private readonly Runner<IncidentDto, Incident> _runner;
-        public CreateIncidentService(
-            ICreateActionHandler<IncidentDto, Incident> createAction,
+        public bool HasErrors => _runner.HasErrors;
+        private Runner<long, Incident> _runner;
+
+        public DeleteIncidentService(
+            IDeleteActionHandler<long, Incident> deleteAction,
             IIncidentsQueryableProvider incidentsQueryableProvider)
         {
-            _runner = new Runner<IncidentDto, Incident>(createAction, incidentsQueryableProvider);
+            _runner = new Runner<long, Incident>(deleteAction, incidentsQueryableProvider);
         }
 
-        public void Handle(IncidentDto input)
+        public void Handle(long input)
         {
             _runner.Run(input);
         }
-
     }
 }

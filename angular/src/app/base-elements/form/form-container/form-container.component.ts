@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-form-container',
   templateUrl: './form-container.component.html'
 })
-export abstract class FormContainerComponent extends SchemaBuilder implements OnInit {
+export class FormContainerComponent extends SchemaBuilder implements OnInit {
 
   constructor(
     private schemaService: SchemaService<FormField[]>,
@@ -122,6 +122,7 @@ export abstract class FormContainerComponent extends SchemaBuilder implements On
         this.errorHandler(response);
       });
     } else {
+      $event.value.Id = this.dataId;
       this.crudService.put(this.getDataUpdateUrl(), this.dataId, $event.value).subscribe(x => {
         this.router.navigateByUrl('/view-incidents');
       }, response => {
@@ -136,13 +137,14 @@ export abstract class FormContainerComponent extends SchemaBuilder implements On
       const errors = response.error.errors as IApiError[];
       errors.forEach(error => {
         error.memberNames.forEach(member => {
-          if (!this.group.controls[member].errors
-            || (this.group.controls[member].errors
-              && !this.group.controls[member].errors.fromApi)) {
-            if (this.group.controls[`${member}label`])
-              this.group.controls[`${member}label`].setErrors({fromApi: error.errorMessage});
+          const memberKey = member[0].toLowerCase() + member.substring(1);
+          if (!this.group.controls[memberKey].errors
+            || (this.group.controls[memberKey].errors
+              && !this.group.controls[memberKey].errors.fromApi)) {
+            if (this.group.controls[`${memberKey}label`])
+              this.group.controls[`${memberKey}label`].setErrors({fromApi: error.errorMessage});
             else
-              this.group.controls[member].setErrors({fromApi: error.errorMessage});
+              this.group.controls[memberKey].setErrors({fromApi: error.errorMessage});
           }
         });
       });

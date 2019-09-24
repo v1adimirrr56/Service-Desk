@@ -1,6 +1,6 @@
 export abstract class SchemaBuilder {
-  protected abstract isCreate: boolean;
-  protected abstract getSchema();
-  protected abstract getContext();
-  protected abstract getData();
+  protected isCreate: boolean;
+  protected getSchema() {}
+  protected getContext() {}
+  protected getData() {}
 }

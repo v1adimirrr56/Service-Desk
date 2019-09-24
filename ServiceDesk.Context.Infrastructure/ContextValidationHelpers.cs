@@ -32,7 +32,8 @@ namespace ServiceDesk.Context.Infrastructure
             foreach (var entry in entries)
             {
                 var entity = entry.Entity;
-                var validationContext = new ValidationContext(entity);
+                var validationProvider = new ValidationServiceProvider(provider);
+                var validationContext = new ValidationContext(entity, validationProvider, null);
                 var entityErrors = new List<ValidationResult>();
                 if (!Validator.TryValidateObject(entity, validationContext, entityErrors))
                     errors.AddRange(entityErrors);
