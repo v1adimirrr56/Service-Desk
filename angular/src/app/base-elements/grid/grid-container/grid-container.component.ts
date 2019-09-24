@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SchemaService } from '../../../services/schema.service';
 import { CrudService } from '../../../services/crud.service';
 import { SchemaBuilder } from '../../models/Schema-builder';
-import { Grid } from '../Grid';
+import { Grid, IFilter } from '../Grid';
 import { forkJoin } from 'rxjs';
+import { $e } from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-grid-container',
@@ -32,9 +33,13 @@ export abstract class GridContainerComponent extends SchemaBuilder implements On
   }
 
   ngOnInit(): void {
+    this.sendRequestSchemaAndData();
+  }
+
+  private sendRequestSchemaAndData() {
     forkJoin(
       this.schemaService.getSchema(this.getSchemaUrl()),
-      this.crudService.getAll(this.getDataUrl())
+      this.crudService.getAllByFilters(this.getDataUrl())
     ).subscribe(x => {
       this.loadSchema(x[0]);
       this.loadData(x[1]);
@@ -48,5 +53,17 @@ export abstract class GridContainerComponent extends SchemaBuilder implements On
 
   private loadData(data: any) {
     this.data = data;
+  }
+
+  filtersChanged($event: IFilter[]) {
+    this.crudService.getAllByFilters(this.getDataUrl(), $event).subscribe(x => {
+      this.loadData(x);
+    });
+  }
+
+  rowDeleteEvent($event: number) {
+    this.crudService.delete(this.getDataUpdateUrl(), $event).subscribe(x => {
+      this.sendRequestSchemaAndData();
+    });
   }
 }

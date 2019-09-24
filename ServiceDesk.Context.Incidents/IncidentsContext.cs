@@ -9,6 +9,7 @@ namespace ServiceDesk.Context.Incidents
     {
         public DbContext Context => this;
         public DbSet<Incident> Incidents { get; set; }
+        public DbSet<StateCityRelation> StateCityRelations { get; set; }
 
         public IncidentsContext(DbContextOptions<IncidentsContext> options)
             : base(options)
@@ -26,6 +27,7 @@ namespace ServiceDesk.Context.Incidents
             modelBuilder.ApplyConfiguration(new PriorityConfig());
             modelBuilder.ApplyConfiguration(new StateConfig());
             modelBuilder.ApplyConfiguration(new StatusConfig());
+            modelBuilder.ApplyConfiguration(new StateCityRelationConfig());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

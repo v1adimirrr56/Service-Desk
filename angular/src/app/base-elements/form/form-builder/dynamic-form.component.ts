@@ -18,9 +18,7 @@ export class DynamicFormComponent {
     if (this.group.valid) {
       this.submit.emit(this.group);
     } else {
-      if (this.group.untouched) {
-        MarkAsTouched(this.group);
-      }
+      MarkAsTouched(this.group);
     }
   }
 }

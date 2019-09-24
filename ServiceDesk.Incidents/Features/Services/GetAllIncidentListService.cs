@@ -10,7 +10,7 @@ using System.Text;
 
 namespace ServiceDesk.Incidents.Features.Services
 {
-    public class GetAllIncidentListService: IServiceQueryHandler<ICollection<FilterConfig>, IEnumerable<IncidentList>>
+    public class GetAllIncidentListService: IServiceQueryHandler<FilterConfig, IEnumerable<IncidentList>>
     {
         private readonly IIncidentsQueryableProvider _provider;
         private readonly IMapper _mapper;
@@ -21,15 +21,15 @@ namespace ServiceDesk.Incidents.Features.Services
             _provider = provider;
             _mapper = mapper;
         }
-        public IEnumerable<IncidentList> Handle(ICollection<FilterConfig> filterConfigs)
+        public IEnumerable<IncidentList> Handle(FilterConfig filterConfigs)
         {
             var query =_provider
                 .Context
-                .Set<Incident>()
-                .Filter(filterConfigs);
+                .Set<Incident>();
 
             var result = _mapper
                 .ProjectTo<IncidentList>(query)
+                .Filter(filterConfigs)
                 .ToList();
             return result;
         }

@@ -2,14 +2,13 @@
 using ServiceDesk.SmartUI.Forms.FormFieldsFactory;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text;
 
 namespace ServiceDesk.SmartUI.Forms.FormFieldsBuilder
 {
-    public class InputBuilder: BuildFormField
+    public class InputNumberBuilder : BuildFormField
     {
         public override FormField Build(PropertyInfo property)
         {
@@ -21,7 +20,7 @@ namespace ServiceDesk.SmartUI.Forms.FormFieldsBuilder
                 NameField = GenerateKey(property),
                 ShowProperties = ShowProperties,
                 Validations = Validations,
-                Type = FieldType.Input.ToString()
+                Type = FieldType.InputNumber.ToString()
             };
 
             return formfield;
@@ -30,12 +29,11 @@ namespace ServiceDesk.SmartUI.Forms.FormFieldsBuilder
         protected override void BuildValidation(PropertyInfo property)
         {
             base.BuildValidation(property);
-            Validations.MaxLength = property.GetCustomAttribute<MaxLengthAttribute>()?.Length;
-            Validations.MinLength = property.GetCustomAttribute<MinLengthAttribute>()?.Length;
-            Validations.RegExp = property.GetCustomAttribute<RegularExpressionAttribute>()?.Pattern;
+            Validations.Max = (int?)property.GetCustomAttribute<RangeAttribute>()?.Maximum;
+            Validations.Min = (int?)property.GetCustomAttribute<RangeAttribute>()?.Minimum;
         }
 
         public override bool CheckFormFieldType(PropertyInfo input)
-            => input.GetCustomAttribute<Input>() != null;
+            => input.GetCustomAttribute<InputNumber>() != null;
     }
 }

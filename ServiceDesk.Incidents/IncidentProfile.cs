@@ -9,6 +9,7 @@ namespace ServiceDesk.Incidents
         public IncidentProfile()
         {
             CreateMap<Incident, IncidentDto>();
+            CreateMap<IncidentDto, Incident>();
         }
     }
 }

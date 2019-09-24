@@ -4,10 +4,13 @@ import { LayoutComponent } from './layout/layout.component';
 import { ViewIncidentGridComponent } from './incident/view-incident-grid/view-incident-grid.component';
 import { CreateIncidentComponent } from './incident/create-incident/create-incident.component';
 import { TabComponent } from './tab/tab.component';
+import { EditIncidentComponent } from './incident/edit-incident/edit-incident.component';
+
 
 const incidentRoutes: Routes = [
   { path: '', component: ViewIncidentGridComponent},
   { path: 'create-incident', component: CreateIncidentComponent},
+  { path: 'edit-incident/:id', component: EditIncidentComponent},
   { path: 'view-incidents', component: ViewIncidentGridComponent}
 ];
 

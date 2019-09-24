@@ -3,5 +3,6 @@ export enum FieldType {
   DropDownList = 'DropDownList',
   Radio = 'Radio',
   Checkbox = 'Checkbox',
-  DatePicker = 'DatePicker'
+  DatePicker = 'DatePicker',
+  InputNumber = 'InputNumber'
 }

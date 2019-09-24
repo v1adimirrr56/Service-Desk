@@ -9,5 +9,5 @@ export interface IColumn {
 
 export interface IFilter {
   propertyName: string;
-  value: any;
+  value: string;
 }

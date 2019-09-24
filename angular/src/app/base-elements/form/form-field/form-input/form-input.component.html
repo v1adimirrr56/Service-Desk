@@ -10,7 +10,7 @@
          (tabKey)="tabKeyEventHandler($event)"
          (ngModelChange)="changeEvent($event)"
          [attr.value]="formControl.value"
-         type="text"/>
+         [attr.type]="typeInput"/>
   <label class="form__field__label"
          [attr.for]="formControlName"
   >{{ formField.showProperties.label }}</label>

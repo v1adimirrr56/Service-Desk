@@ -29,7 +29,16 @@ namespace ServiceDesk.Incidents
         }
 
         [HttpPost]
-        public IActionResult AddIncident([FromBody]IncidentDto incident)
+        public IActionResult CreateIncident([FromBody]IncidentDto incident)
+        {
+            _createIncident.Handle(incident);
+            if (_createIncident.HasError)
+                return BadRequest(new ValidationResultModel(_createIncident.Errors));
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateIncident([FromBody]IncidentDto incident)
         {
             _createIncident.Handle(incident);
             if (_createIncident.HasError)

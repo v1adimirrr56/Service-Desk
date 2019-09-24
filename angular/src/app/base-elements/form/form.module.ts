@@ -19,6 +19,7 @@ import { ShowDropDownListDirective } from './form-field/form-drop-down-list/show
 import { FormErrorComponent } from './form-field/form-error/form-error.component';
 import { HasScrollDirective } from './form-field/form-drop-down-list/has-scroll.directive';
 import { ShowErrorDirective } from './form-field/form-error/show-error.directive';
+import { FormInputNumberComponent } from './form-field/form-input-number/form-input-number.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ShowErrorDirective } from './form-field/form-error/show-error.directive
     ShowDropDownListDirective,
     FormErrorComponent,
     HasScrollDirective,
-    ShowErrorDirective
+    ShowErrorDirective,
+    FormInputNumberComponent
   ],
   exports: [
     DynamicFormComponent,
@@ -47,7 +49,8 @@ import { ShowErrorDirective } from './form-field/form-error/show-error.directive
     FormDropDownListComponent,
     FormDatePickerComponent,
     FormRadioComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    FormInputNumberComponent
   ],
   imports: [
     CommonModule,

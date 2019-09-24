@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormContainerComponent } from '../../base-elements/form/form-container/form-container.component';
+import { getContext } from '@angular/core/src/render3/discovery_utils';
+
 
 @Component({
-  selector: 'app-create-incident',
+  selector: 'app-edit-incident',
   templateUrl: '../../base-elements/form/form-container/form-container.component.html',
-  styleUrls: ['./create-incident.component.sass']
+  styleUrls: ['./edit-incident.component.sass']
 })
-export class CreateIncidentComponent extends FormContainerComponent implements OnInit {
-  isCreate = true;
+export class EditIncidentComponent extends FormContainerComponent implements OnInit {
+  isCreate = false;
   getContext() {
     return 'Incidents';
   }
@@ -18,5 +20,8 @@ export class CreateIncidentComponent extends FormContainerComponent implements O
 
   getData() {
     return 'Incidents';
+  }
+  ngOnInit(): void {
+    super.ngOnInit();
   }
 }

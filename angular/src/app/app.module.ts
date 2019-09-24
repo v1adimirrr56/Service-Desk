@@ -10,6 +10,7 @@ import { FormModule } from './base-elements/form/form.module';
 import { BaseElementsModule } from './base-elements/base-elements.module';
 import { CreateIncidentComponent } from './incident/create-incident/create-incident.component';
 import { ViewIncidentGridComponent } from './incident/view-incident-grid/view-incident-grid.component';
+import { EditIncidentComponent } from './incident/edit-incident/edit-incident.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ViewIncidentGridComponent } from './incident/view-incident-grid/view-in
     LayoutComponent,
     TabComponent,
     CreateIncidentComponent,
-    ViewIncidentGridComponent
+    ViewIncidentGridComponent,
+    EditIncidentComponent
   ],
   imports: [
     BrowserModule,

@@ -7,13 +7,15 @@ import { FormCheckboxComponent } from './form-checkbox/form-checkbox.component';
 import { FormDatePickerComponent } from './form-date-picker/form-date-picker.component';
 import { FormDropDownListComponent } from './form-drop-down-list/form-drop-down-list.component';
 import { FormRadioComponent } from './form-radio/form-radio.component';
+import { FormInputNumberComponent } from './form-input-number/form-input-number.component';
 
 const mappingFromFormTypeToFormComponent = {
   [FieldType.Input]: FormInputComponent,
   [FieldType.Checkbox]: FormCheckboxComponent,
   [FieldType.DatePicker]: FormDatePickerComponent,
   [FieldType.DropDownList]: FormDropDownListComponent,
-  [FieldType.Radio]: FormRadioComponent
+  [FieldType.Radio]: FormRadioComponent,
+  [FieldType.InputNumber]: FormInputNumberComponent
 };
 @Directive({
   selector: '[appDynamicFormField]'

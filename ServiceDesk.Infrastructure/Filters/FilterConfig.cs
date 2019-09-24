@@ -6,8 +6,8 @@ namespace ServiceDesk.Infrastructure.Filters
 {
     public class FilterConfig
     {
-        public string PropertyName { get; set; }
-        public object Value { get; set; }
+        public ICollection<string> PropertyNames { get; set; }
+        public ICollection<string> Values { get; set; }
     }
 
 }

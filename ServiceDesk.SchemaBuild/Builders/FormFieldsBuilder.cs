@@ -50,7 +50,8 @@ namespace ServiceDesk.SchemaBuild.Builders
                 new DatePickerBuilder(),
                 new DropDownListBuilder(new OptionsBuilder(queryableProvider, _httpContextAccessor)),
                 new RadioBuilder(new OptionsBuilder(queryableProvider, _httpContextAccessor)),
-                new InputBuilder()
+                new InputBuilder(),
+                new InputNumberBuilder()
             };
         }
     }

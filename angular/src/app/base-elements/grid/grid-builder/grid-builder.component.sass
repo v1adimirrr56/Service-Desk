@@ -1,18 +1,36 @@
 @import "../../../../assets/color-variables"
+
 $padding-cell: .8rem 1rem
 .grid
   background-color: #ffffff
   border: 1px solid #cccecf
   border-spacing: 0
+  border-collapse: collapse
   &__header
     &__row
       &__cell
         padding: $padding-cell
+        background-color: $primary-color
+        color: #fff
+        font-weight: 300
   &__body
+    &__filter__row__cell
+      padding: 0.8rem 1rem
+    & input
+      outline: 0
+      border: 0
+      border-bottom: 1px solid #d9d9d9
     &__row
+      border-top: 1px solid #cccecf
       &__cell
         padding: $padding-cell
         max-width: 6rem
         overflow: hidden
         text-overflow: ellipsis
         white-space: nowrap
+      &__actions__container
+        display: flex
+        width: 14rem
+        justify-content: space-around
+.button_create
+  margin-bottom: 15px

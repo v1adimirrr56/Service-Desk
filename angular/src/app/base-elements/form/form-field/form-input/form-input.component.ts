@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormField } from '../models/FormField';
 import { FormGroup } from '@angular/forms';
 import { FormGroupField } from '../models/FormGroupFields';
-import { $e } from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-input',
@@ -12,6 +11,7 @@ import { $e } from 'codelyzer/angular/styles/chars';
 export class FormInputComponent extends FormGroupField implements OnInit {
   @Input() group: FormGroup;
   @Input() formField: FormField;
+  @Input() typeInput = 'text';
   @Input() forceFocus;
   @Output() formFieldFocusChanged = new EventEmitter();
   @Output() tabKeyEvent = new EventEmitter();
@@ -30,10 +30,11 @@ export class FormInputComponent extends FormGroupField implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.group.get(this.formField.nameField).value);
     super.ngOnInit();
   }
 
   changeEvent($event) {
-    this.inputValueChanged.emit(this.formControl.value)
+    this.inputValueChanged.emit(this.formControl.value);
   }
 }

@@ -34,8 +34,9 @@ export class FormDropDownListComponent extends FormGroupField implements OnInit 
     super.ngOnInit();
     const initialOption = this.formField.options.find(x => x.value === this.formControl.value);
     this.labelFormField = {...this.formField, nameField: this.getLabelFormFieldName()};
-    this.group.addControl(this.getLabelFormFieldName(), new FormControl({}, this.formControl.validator));
-    this.group.controls[this.getLabelFormFieldName()].setValue(initialOption.label);
+    this.group.addControl(this.getLabelFormFieldName(), new FormControl('', this.formControl.validator));
+    if (initialOption && initialOption.label)
+      this.group.controls[this.getLabelFormFieldName()].setValue(initialOption.label);
   }
 
   getLabelFormFieldName() {
@@ -62,6 +63,6 @@ export class FormDropDownListComponent extends FormGroupField implements OnInit 
   }
 
   inputValueChanged($event) {
-    console.log($event)
+
   }
 }

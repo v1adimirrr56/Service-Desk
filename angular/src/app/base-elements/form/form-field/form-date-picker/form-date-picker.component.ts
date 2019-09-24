@@ -19,9 +19,10 @@ export class FormDatePickerComponent extends FormGroupField implements OnInit {
   }
   ngOnInit(): void {
     super.ngOnInit();
-    const date = new Date(this.formControl.value).toLocaleDateString('en-US');
-    this.formControl.setValue(date);
-    this.input.forceFocus = true;
+    if (this.formControl.value) {
+      const date = new Date(this.formControl.value).toLocaleDateString('en-US');
+      this.formControl.setValue(date);
+    }
   }
 
   chooseDate($event) {

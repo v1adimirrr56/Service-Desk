@@ -14,10 +14,11 @@ namespace ServiceDesk.Incidents.Models
     {
         [HiddenInput]
         public long Id { get; set; }
-        [MinLength(5)]
+        [Required, MinLength(5)]
         public string Title { get; set; }
         [DropDownList(typeof(StateSelector))]
         [DisplayName("State")]
+        [Required]
         public long StateId { get; set; }
         [DropDownList(typeof(CitySelector))]
         [Required]
@@ -25,24 +26,27 @@ namespace ServiceDesk.Incidents.Models
         public long CityId { get; set; }
         [DropDownList(typeof(ImpactSelector))]
         [DisplayName("Impact")]
+        [Required]
         public long ImpactId { get; set; }
         [DropDownList(typeof(ManagerSelector))]
         [DisplayName("Manager")]
         public long ManagerId { get; set; }
         [DropDownList(typeof(PrioritySelector))]
         [DisplayName("Priority")]
+        [Required]
         public long PriorityId { get; set; }
         [DatePicker]
         [DisplayName("Plan date resolve")]
+        [Required]
         public DateTime PlanDateResolve { get; set; }
         [DatePicker]
         [DisplayName("Pass to the vendor")]
         public DateTime PassVendorDate { get; set; }
-        [Range(0, 5)]
+        [Required, Range(1, 5)]
+        [InputNumber]
         public double Rate { get; set; }
         [Checkbox]
         [DisplayName("Subscribe to notifications")]
-        [Required]
         public bool UseNotification { get; set; }
         [Checkbox]
         [DisplayName("Composite")]
@@ -52,7 +56,7 @@ namespace ServiceDesk.Incidents.Models
         [DisplayName("Choose the share type")]
         public ShareType ShareType { get; set; }
         [DisplayName("Contact email")]
-        [RegularExpression(@"[^@]+@[^\.]+\..+")]
+        [Required, RegularExpression(@"[^@]+@[^\.]+\..+")]
         public string ContactEmail { get; set; }
         [DisplayName("Contact phone")]
         public string ContactPhone { get; set; }

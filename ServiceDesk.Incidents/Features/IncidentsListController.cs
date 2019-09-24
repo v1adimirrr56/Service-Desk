@@ -9,17 +9,23 @@ namespace ServiceDesk.Incidents.Features
 {
     public class IncidentsListController : IncidentsBaseServiceDeskController
     {
-        private readonly IServiceQueryHandler<ICollection<FilterConfig>, IEnumerable<IncidentList>> _getAllIncidentList;
+        private readonly IServiceQueryHandler<FilterConfig, IEnumerable<IncidentList>> _getAllIncidentList;
         public IncidentsListController(
-            IServiceQueryHandler<ICollection<FilterConfig>, IEnumerable<IncidentList>> getAllIncidentList)
+            IServiceQueryHandler<FilterConfig, IEnumerable<IncidentList>> getAllIncidentList)
         {
             _getAllIncidentList = getAllIncidentList;
         }
 
         [HttpGet]
-        public IActionResult GetAll(ICollection<FilterConfig> filterConfigs)
+        public IActionResult GetAll([FromQuery]FilterConfig filterConfigs)
         {
             return Ok(_getAllIncidentList.Handle(filterConfigs));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteIncident(long id)
+        {
+            return Ok();
         }
 
     }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ServiceDesk.Context.Incidents;
 
 namespace ServiceDesk.Context.Incidents.Migrations
 {
     [DbContext(typeof(IncidentsContext))]
-    partial class IncidentsContextModelSnapshot : ModelSnapshot
+    [Migration("20190923134222_StateCityRelation")]
+    partial class StateCityRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,9 +124,7 @@ namespace ServiceDesk.Context.Incidents.Migrations
 
                     b.Property<string>("ContactPhone");
 
-                    b.Property<DateTime>("CreateDate")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("getutcdate()");
+                    b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("CreatorName");
 
@@ -182,14 +182,14 @@ namespace ServiceDesk.Context.Incidents.Migrations
                             CityId = 1L,
                             ContactEmail = "ching.hso-lin89@example.com",
                             ContactPhone = "+1(137)-691-2995",
-                            CreateDate = new DateTime(2019, 9, 24, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(426),
+                            CreateDate = new DateTime(2019, 9, 23, 13, 42, 22, 244, DateTimeKind.Utc).AddTicks(9196),
                             CreatorName = "Ching Hso-lin",
                             ImpactId = 1L,
                             IsComposite = true,
                             ManagerId = 1L,
-                            PassVendorDate = new DateTime(2019, 10, 26, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(2171),
+                            PassVendorDate = new DateTime(2019, 10, 25, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(1374),
                             PhaseId = 1L,
-                            PlanDateResolve = new DateTime(2019, 10, 4, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(4853),
+                            PlanDateResolve = new DateTime(2019, 10, 3, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(4480),
                             PriorityId = 1L,
                             Rate = 5.0,
                             ShareType = 0,
@@ -204,14 +204,14 @@ namespace ServiceDesk.Context.Incidents.Migrations
                             CityId = 2L,
                             ContactEmail = "ngoma42@example.com",
                             ContactPhone = "+1(137)-691-2995",
-                            CreateDate = new DateTime(2019, 9, 24, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7343),
+                            CreateDate = new DateTime(2019, 9, 23, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7674),
                             CreatorName = "Ngoma",
                             ImpactId = 2L,
                             IsComposite = false,
                             ManagerId = 2L,
-                            PassVendorDate = new DateTime(2019, 10, 17, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7353),
+                            PassVendorDate = new DateTime(2019, 10, 16, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7690),
                             PhaseId = 2L,
-                            PlanDateResolve = new DateTime(2019, 10, 10, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7369),
+                            PlanDateResolve = new DateTime(2019, 10, 9, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7716),
                             PriorityId = 2L,
                             Rate = 7.0,
                             ShareType = 1,
@@ -226,14 +226,14 @@ namespace ServiceDesk.Context.Incidents.Migrations
                             CityId = 3L,
                             ContactEmail = "szegeczowska90@example.com",
                             ContactPhone = "+1(137)-691-2995",
-                            CreateDate = new DateTime(2019, 9, 24, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7390),
+                            CreateDate = new DateTime(2019, 9, 23, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7749),
                             CreatorName = "Szegeczowska",
                             ImpactId = 3L,
                             IsComposite = false,
                             ManagerId = 3L,
-                            PassVendorDate = new DateTime(2019, 11, 23, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7390),
+                            PassVendorDate = new DateTime(2019, 11, 22, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7750),
                             PhaseId = 3L,
-                            PlanDateResolve = new DateTime(2019, 9, 26, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7391),
+                            PlanDateResolve = new DateTime(2019, 9, 25, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7751),
                             PriorityId = 3L,
                             Rate = 2.0,
                             ShareType = 0,
@@ -248,14 +248,14 @@ namespace ServiceDesk.Context.Incidents.Migrations
                             CityId = 1L,
                             ContactEmail = "hiram-mackenzie9@example.com",
                             ContactPhone = "+1(137)-691-2995",
-                            CreateDate = new DateTime(2019, 9, 24, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7393),
+                            CreateDate = new DateTime(2019, 9, 23, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7753),
                             CreatorName = "Hiram Mackenzie",
                             ImpactId = 1L,
                             IsComposite = true,
                             ManagerId = 1L,
-                            PassVendorDate = new DateTime(2019, 9, 26, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7396),
+                            PassVendorDate = new DateTime(2019, 9, 25, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7759),
                             PhaseId = 1L,
-                            PlanDateResolve = new DateTime(2019, 10, 2, 5, 28, 44, 767, DateTimeKind.Utc).AddTicks(7398),
+                            PlanDateResolve = new DateTime(2019, 10, 1, 13, 42, 22, 245, DateTimeKind.Utc).AddTicks(7760),
                             PriorityId = 1L,
                             Rate = 5.0,
                             ShareType = 0,
