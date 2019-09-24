@@ -1,0 +1,31 @@
+@import '../../../../../assets/form-input-fields'
+@import '../../../../../assets/color-variables'
+.dropdownlist
+  display: inline-block
+  position: relative
+.options
+  position: absolute
+  top: 38px
+  z-index: 9999
+  border: 1px solid #cccecf
+  background-color: #fff
+  width: 100%
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 7px 0 rgba(0, 0, 0, 0.1)
+  &__item
+    padding: 9px
+    transition: 0.15s ease-in-out
+    display: block
+    text-decoration: none
+    color: #313131
+    &:hover, &:focus
+      outline: none
+      background-color: $primary-color
+      color: #fff
+      cursor: pointer
+.active
+  display: block
+.inactive
+  display: none
+.hasScroll
+  overflow-y: scroll
+  height: 140px

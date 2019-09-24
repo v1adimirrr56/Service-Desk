@@ -1,0 +1,24 @@
+<div *ngIf="appFormControl.invalid && (appFormControl.dirty || appFormControl.touched)"
+     class="form__errors">
+  <div class="form__error" *ngIf="appFormControl.errors.required" appShowError>
+    *Required
+  </div>
+  <div class="form__error" *ngIf="appFormControl.errors.max" appShowError>
+    *Number must to be lower than {{appFormControl.errors.max.max}}
+  </div>
+  <div class="form__error" *ngIf="appFormControl.errors.min" appShowError>
+    *Number must to be higher than {{appFormControl.errors.min.min}}
+  </div>
+  <div class="form__error" *ngIf="appFormControl.errors.minlength" appShowError>
+    *String must to be at least {{appFormControl.errors.minlength.requiredLength}} characters long
+  </div>
+  <div class="form__error" *ngIf="appFormControl.errors.maxlength" appShowError>
+    *String must to be shorter than {{appFormControl.errors.maxlength.requiredLength}} characters long
+  </div>
+  <div class="form__error" *ngIf="appFormControl.errors.pattern" appShowError>
+    *Uncorrected string
+  </div>
+  <div [attr.aria-labelledby]="appFormControl.errors.fromApi" class="form__error" *ngIf="appFormControl.errors.fromApi" appShowError>
+    *{{appFormControl.errors.fromApi}}
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<form class="form" [formGroup]="group">
+  <ng-container
+    *ngFor="let fieldSchema of schema; let i = index"
+    appDynamicFormField
+    [group]="group"
+    [formField]="fieldSchema"
+  ></ng-container>
+</form>
+<app-submit-button [group]="group" (submitFormEvent)="submitForm()"></app-submit-button>
+
+
+

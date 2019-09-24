@@ -1,0 +1,8 @@
+<ng-template #loading>Loading...</ng-template>
+<app-grid-builder
+  *ngIf="isLoaded; else loading"
+  [schema]="schema"
+  [data]="data"
+  (filtersChanged)="filtersChanged($event)"
+  (rowDeleteEvent)="rowDeleteEvent($event)"
+></app-grid-builder>

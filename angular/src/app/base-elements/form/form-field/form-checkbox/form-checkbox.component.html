@@ -1,0 +1,19 @@
+<div class="form__field"
+     [formGroup]="group">
+  <div class="form__field__items">
+    <div class="form__field__item">
+      <input class="form__field__checkbox"
+             id="{{formField.nameField}}checkbox"
+             [attr.name]="formField.nameField"
+             [formControlName]="formField.nameField"
+             [checked]="formControl.value"
+             type="checkbox"/>
+      <label class="form__field__label"
+             for="{{formField.nameField}}checkbox" >
+        <app-svg class="form__field__done" [svgIcon]="'done'"></app-svg>
+        {{formField.showProperties.label}}</label>
+    </div>
+  </div>
+  <app-form-error [appFormControl]="formControl"></app-form-error>
+</div>
+

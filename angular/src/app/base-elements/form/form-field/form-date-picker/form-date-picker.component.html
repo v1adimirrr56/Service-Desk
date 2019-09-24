@@ -1,0 +1,11 @@
+<div class="datepicker_container" appOutside (outsideEvent)="outsideEvent($event)">
+  <app-input
+      #input
+      [group]="group"
+      [formField]="formField"
+      (click)="clickHandler($event)">
+  </app-input>
+  <app-date-picker
+    (chosenDateChanged)="chooseDate($event)"
+    *appShowDatePicker="isShow"></app-date-picker>
+</div>

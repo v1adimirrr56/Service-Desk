@@ -1,2 +1,9 @@
+bin/
+obj/
 .vs/
 /.idea
+
+/ng-app/dist
+/ng-app/node_modules
+/ng-app/.idea
+angular/src/\.idea/

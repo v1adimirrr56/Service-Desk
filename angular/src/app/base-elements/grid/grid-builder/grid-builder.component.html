@@ -1,0 +1,52 @@
+<button class="button button_primary button_create" (click)="createNavigate()">Create incident</button>
+<table class="grid">
+  <thead class="grid__header">
+  <tr class="grid__header__row">
+    <th *ngFor="let column of schema.columns"
+        class="grid__header__row__cell">{{column.label}}</th>
+    <th
+      class="grid__header__row__cell">
+      Actions
+    </th>
+  </tr>
+  </thead>
+  <tbody class="grid__body">
+  <tr class="grid__body__filter__row">
+    <th class="grid__body__filter__row__cell">
+    </th>
+    <th
+      class="grid__body__filter__row__cell">
+      <input type="text"
+             placeholder="State name"
+             [(ngModel)]="stateValue"
+             (ngModelChange)="changeInputValue('StateName', stateValue)"/>
+    </th>
+    <th
+      class="grid__body__filter__row__cell">
+      <input type="text"
+             placeholder="Status name"
+             [(ngModel)]="statusValue"
+             (ngModelChange)="changeInputValue('StatusName', statusValue)"/>
+    </th>
+    <th class="grid__body__filter__row__cell">
+    </th>
+    <th class="grid__body__filter__row__cell">
+    </th>
+    <th class="grid__body__filter__row__cell">
+    </th>
+    <th class="grid__body__filter__row__cell">
+    </th>
+  </tr>
+  <tr *ngFor="let row of data"
+      class="grid__body__row">
+    <td *ngFor="let key of keys"
+        class="grid__body__row__cell">{{row[key]}}</td>
+    <td class="grid__body__row__actions">
+      <div class="grid__body__row__actions__container">
+        <button class="button button_primary" (click)="editNavigate(row.id)">Edit</button>
+        <button class="button button_primary" (click)="deleteRow(row.id)">Delete</button>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

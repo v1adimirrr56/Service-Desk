@@ -1,0 +1,21 @@
+<div class="dropdownlist" [formGroup]="group"
+     appShowDropDownList
+     (tabKeyEvent)="tabKeyEventHandler($event)">
+  <app-input
+    #input
+    [group]="group"
+    [formField]="labelFormField"
+    (formFieldFocusChanged)="focusChangeEvent($event)"
+    (inputValueChanged)="inputValueChanged($event)"
+  ></app-input>
+  <div class="options"
+       [appHasScroll]="formField.options"
+       [ngClass]="
+       { active: isShow, inactive: !isShow }">
+    <a class="options__item" *ngFor="let option of formField.options; let i = index"
+       (click)="chooseOption(option)">
+      {{option.label}}
+    </a>
+  </div>
+</div>
+

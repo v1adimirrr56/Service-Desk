@@ -1,0 +1,6 @@
+<ng-template #loading>Loading...</ng-template>
+<app-dynamic-form *ngIf="isLoaded; else loading"
+              [schema]="schema"
+              [group]="group"
+              (submit)="submit($event)"
+></app-dynamic-form>
